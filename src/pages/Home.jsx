@@ -114,35 +114,6 @@ const Home = () => {
         <Typography variant="h2" align="center" gutterBottom>
           How STUDEx Helps You Move Forward
         </Typography>
-        {/* <Grid container spacing={4} sx={{ mt: 2 }}>
-          <Grid item xs={12} md={4}>
-            <Box textAlign="center">
-              <EmojiObjects sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-              <Typography variant="h5" gutterBottom>Relatable Stories</Typography>
-              <Typography>
-                Discover how real students overcame challenges similar to yours. No platitudes - just authentic journeys.
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box textAlign="center">
-              <TrendingUp sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-              <Typography variant="h5" gutterBottom>Actionable Tools</Typography>
-              <Typography>
-                Get practical strategies and resources designed specifically for student challenges.
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Box textAlign="center">
-              <Group sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
-              <Typography variant="h5" gutterBottom>Supportive Community</Typography>
-              <Typography>
-                Connect with others who understand. Share experiences and grow together.
-              </Typography>
-            </Box>
-          </Grid>
-        </Grid> */}
         <Grid
           container
           spacing={4}
