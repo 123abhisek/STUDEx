@@ -7,9 +7,9 @@ import { EmojiObjects, Group, TrendingUp } from '@mui/icons-material';
 const Home = () => {
   // Sample data - replace with actual content
   const featuredStories = [
-    { id: 1, title: 'From Dropout to Dean\'s List', category: 'Academic', excerpt: 'How I overcame academic probation...' },
-    { id: 2, title: 'Finding My Passion After Failure', category: 'Career', excerpt: 'Failed my internship but found my true calling...' },
-    { id: 3, title: 'Breaking Through Depression', category: 'Personal', excerpt: 'My journey with mental health in college...' },
+    { id: "https://media.istockphoto.com/id/1482169960/photo/airport-travel-and-portrait-of-woman-with-passport-flight-ticket-or-information-of.webp?a=1&b=1&s=612x612&w=0&k=20&c=DSYz4f6IOHKrx05aiNAMWrZgtcnC8KVp66K6gYRp-qs=", title: 'From Dropout to Dean\'s List', category: 'Academic', excerpt: 'How I overcame academic probation...' },
+    { id: "https://media.istockphoto.com/id/1988207742/photo/woman-university-student-and-books-in-portrait-outdoor-and-pride-for-learning-knowledge-or.webp?a=1&b=1&s=612x612&w=0&k=20&c=a-6hye_832TdIOsCQkByd22ivh04gk0r8sF8o2U3nH4=", title: 'Finding My Passion After Failure', category: 'Career', excerpt: 'Failed my internship but found my true calling...' },
+    { id: "https://media.istockphoto.com/id/2172873491/photo/university-student-and-man-in-portrait-outdoor-on-campus-with-book-for-education-learning-and.webp?a=1&b=1&s=612x612&w=0&k=20&c=gAkHSTpK9q2L6mf_y24LNtxLFNrh5scF1VvdI7zEQn4=", title: 'Breaking Through Depression', category: 'Personal', excerpt: 'My journey with mental health in college...' },
   ];
 
   const testimonials = [
@@ -121,7 +121,7 @@ const Home = () => {
                   <CardMedia
                     component="img"
                     height="160"
-                    image={`https://source.unsplash.com/random/400x200?student,${story.id}`}
+                    image={`${story.id}`}
                     alt={story.title}
                   />
                   <CardContent>

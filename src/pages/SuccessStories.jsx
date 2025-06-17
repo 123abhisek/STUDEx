@@ -12,17 +12,17 @@ const SuccessStories = () => {
   
   // Sample stories data - replace with API data
   const stories = [
-    { id: 1, title: 'From Academic Probation to Honors', category: 'academic', 
+    { id: "https://images.unsplash.com/flagged/photo-1558153267-7e0ae5162b18?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fEZyb20lMjBBY2FkZW1pYyUyMFByb2JhdGlvbiUyMHRvJTIwSG9ub3JzfGVufDB8fDB8fHww", title: 'From Academic Probation to Honors', category: 'academic', 
       excerpt: 'How I turned my failing grades into a 3.8 GPA', tags: ['resilience', 'study habits'] },
-    { id: 2, title: 'Finding My Career Path After Failure', category: 'career', 
+    { id: "https://media.istockphoto.com/id/1067296784/photo/difficult-decision-concept.webp?a=1&b=1&s=612x612&w=0&k=20&c=FgcOzRQoZE9QFyYEoja3av0wpR2GpyEPNNVnUlYQsfU=", title: 'Finding My Career Path After Failure', category: 'career', 
       excerpt: 'Rejected from 50 internships but landed my dream job', tags: ['perseverance', 'career'] },
-    { id: 3, title: 'Overcoming Social Anxiety in College', category: 'personal', 
+    { id: "https://media.istockphoto.com/id/1475870526/photo/laptop-night-and-tired-with-a-student-woman-learning-or-studying-in-her-home-for-a-university.webp?a=1&b=1&s=612x612&w=0&k=20&c=PDLpM92hIA1h6QHMPAZ-IiwSNJnnCebO1Cx-B39lLjc=", title: 'Overcoming Social Anxiety in College', category: 'personal', 
       excerpt: 'My journey from isolation to student leadership', tags: ['mental health', 'confidence'] },
-    { id: 4, title: 'Balancing Work and Studies', category: 'academic', 
+    { id: "https://images.unsplash.com/photo-1585924015977-32fd3839c21f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fEJhbGFuY2luZyUyMFdvcmslMjBhbmQlMjBTdHVkaWVzfGVufDB8fDB8fHww", title: 'Balancing Work and Studies', category: 'academic', 
       excerpt: 'How I maintained grades while working 30 hours/week', tags: ['time management', 'balance'] },
-    { id: 5, title: 'From Burnout to Balance', category: 'personal', 
+    { id: "https://images.unsplash.com/photo-1585237846553-1d4dc1289d5b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8RnJvbSUyMEJ1cm5vdXQlMjB0byUyMEJhbGFuY2V8ZW58MHx8MHx8fDA%3D", title: 'From Burnout to Balance', category: 'personal', 
       excerpt: 'Rediscovering my passion after complete exhaustion', tags: ['self-care', 'mindfulness'] },
-    { id: 6, title: 'Switching Majors Successfully', category: 'academic', 
+    { id: "https://images.unsplash.com/photo-1659080907097-6153cd4ff69d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8U3dpdGNoaW5nJTIwTWFqb3JzJTIwU3VjY2Vzc2Z1bGx5fGVufDB8fDB8fHww", title: 'Switching Majors Successfully', category: 'academic', 
       excerpt: 'How I found my true calling after 2 years of engineering', tags: ['decision-making', 'purpose'] },
   ];
 
@@ -89,7 +89,7 @@ const SuccessStories = () => {
               <CardMedia
                 component="img"
                 height="200"
-                image={`https://source.unsplash.com/random/600x400?student,${story.id}`}
+                image={`${story.id}`}
                 alt={story.title}
               />
               <CardContent sx={{ flexGrow: 1 }}>
