@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import { 
   Container, Box, Typography, TextField, Button, 
   FormControl, FormLabel, RadioGroup, FormControlLabel, 
-  Radio, Alert, CircularProgress
+  Radio, Alert, CircularProgress, Grid, Checkbox // ✅ ADD Grid & Checkbox
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+
 
 const ShareStory = () => {
   const [formData, setFormData] = useState({

@@ -41,6 +41,27 @@ const AboutUs = () => {
     },
   ];
 
+  const values = [
+    {
+      icon: <EmojiEventsIcon sx={{ fontSize: 50, color: "primary.main" }} />,
+      title: "Authenticity Over Perfection",
+      description:
+        "We believe real stories of struggle and imperfect progress are more valuable than polished success narratives. Raw honesty creates true connection.",
+    },
+    {
+      icon: <GroupIcon sx={{ fontSize: 50, color: "primary.main" }} />,
+      title: "Community Support",
+      description:
+        "Growth happens together. We foster a supportive environment where students lift each other up and share wisdom gained through experience.",
+    },
+    {
+      icon: <PublicIcon sx={{ fontSize: 50, color: "primary.main" }} />,
+      title: "Practical Empowerment",
+      description:
+        "We focus on actionable strategies rather than abstract advice. Our tools are designed to create tangible progress in students' lives.",
+    },
+  ];
+
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       {/* Hero Section */}
@@ -49,8 +70,7 @@ const AboutUs = () => {
           Our Mission to Transform Student Struggles
         </Typography>
         <Typography variant="h5" color="text.secondary">
-          Creating a world where every challenge becomes an opportunity for
-          growth
+          Creating a world where every challenge becomes an opportunity for growth
         </Typography>
       </Box>
 
@@ -61,20 +81,13 @@ const AboutUs = () => {
             Why STUDEx Exists
           </Typography>
           <Typography variant="body1" paragraph>
-            During my sophomore year, I hit rock bottom. Failing classes, losing
-            motivation, and feeling completely directionless, I desperately
-            searched for resources that understood what I was going through.
+            During my sophomore year, I hit rock bottom. Failing classes, losing motivation, and feeling completely directionless, I desperately searched for resources that understood what I was going through.
           </Typography>
           <Typography variant="body1" paragraph>
-            All I found were generic advice articles and success stories that
-            felt completely unattainable. What I needed was to hear from real
-            students who had been where I was and found their way through.
+            All I found were generic advice articles and success stories that felt completely unattainable. What I needed was to hear from real students who had been where I was and found their way through.
           </Typography>
           <Typography variant="body1" paragraph>
-            STUDEx was born from that frustration. We're creating the resource I
-            wish I had - a platform where students share authentic stories of
-            struggle and breakthrough, where practical tools meet genuine
-            empathy, and where no one has to feel alone in their challenges.
+            STUDEx was born from that frustration. We're creating the resource I wish I had — a platform where students share authentic stories of struggle and breakthrough, where practical tools meet genuine empathy, and where no one has to feel alone in their challenges.
           </Typography>
           <Box sx={{ display: "flex", alignItems: "center", mt: 3 }}>
             <Avatar
@@ -84,7 +97,7 @@ const AboutUs = () => {
             />
             <Box>
               <Typography fontWeight={600}>Abhishek</Typography>
-              <Typography variant="body2">STUDEx</Typography>
+              <Typography variant="body2">Founder, STUDEx</Typography>
             </Box>
           </Box>
         </Grid>
@@ -104,7 +117,7 @@ const AboutUs = () => {
         </Grid>
       </Grid>
 
-      {/* Our Values */}
+      {/* Our Core Values */}
       <Box sx={{ mb: 8 }}>
         <Typography
           variant="h3"
@@ -114,61 +127,30 @@ const AboutUs = () => {
         >
           Our Core Values
         </Typography>
-        <Grid container spacing={4}>
-          <Grid item xs={12} md={4}>
-            <Paper
-              elevation={3}
-              sx={{ p: 4, height: "100%", borderRadius: "16px" }}
-            >
-              <Box textAlign="center" sx={{ mb: 3 }}>
-                <EmojiEventsIcon sx={{ fontSize: 50, color: "primary.main" }} />
-              </Box>
-              <Typography variant="h5" align="center" gutterBottom>
-                Authenticity Over Perfection
-              </Typography>
-              <Typography align="center">
-                We believe real stories of struggle and imperfect progress are
-                more valuable than polished success narratives. Raw honesty
-                creates true connection.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper
-              elevation={3}
-              sx={{ p: 4, height: "100%", borderRadius: "16px" }}
-            >
-              <Box textAlign="center" sx={{ mb: 3 }}>
-                <GroupIcon sx={{ fontSize: 50, color: "primary.main" }} />
-              </Box>
-              <Typography variant="h5" align="center" gutterBottom>
-                Community Support
-              </Typography>
-              <Typography align="center">
-                Growth happens together. We foster a supportive environment
-                where students lift each other up and share wisdom gained
-                through experience.
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <Paper
-              elevation={3}
-              sx={{ p: 4, height: "100%", borderRadius: "16px" }}
-            >
-              <Box textAlign="center" sx={{ mb: 3 }}>
-                <PublicIcon sx={{ fontSize: 50, color: "primary.main" }} />
-              </Box>
-              <Typography variant="h5" align="center" gutterBottom>
-                Practical Empowerment
-              </Typography>
-              <Typography align="center">
-                We focus on actionable strategies rather than abstract advice.
-                Our tools are designed to create tangible progress in students'
-                lives.
-              </Typography>
-            </Paper>
-          </Grid>
+        <Grid container spacing={4} justifyContent="center">
+          {values.map((val, index) => (
+            <Grid item xs={12} sm={8} md={4} key={index}>
+              <Paper
+                elevation={3}
+                sx={{
+                  p: 4,
+                  height: "100%",
+                  borderRadius: "16px",
+                  textAlign: "center",
+                  transition: "transform 0.3s",
+                  "&:hover": { transform: "translateY(-4px)", boxShadow: 6 },
+                }}
+              >
+                <Box sx={{ mb: 3 }}>{val.icon}</Box>
+                <Typography variant="h5" gutterBottom>
+                  {val.title}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {val.description}
+                </Typography>
+              </Paper>
+            </Grid>
+          ))}
         </Grid>
       </Box>
 
@@ -186,7 +168,13 @@ const AboutUs = () => {
         <Typography variant="h3" gutterBottom>
           Our Impact So Far
         </Typography>
-        <Grid container spacing={4} sx={{ mt: 4 }} justifyContent="center" textAlign="center">
+        <Grid
+          container
+          spacing={4}
+          sx={{ mt: 4 }}
+          justifyContent="center"
+          textAlign="center"
+        >
           {[
             { value: "1,200+", label: "Stories Shared" },
             { value: "85%", label: "Feel Less Alone" },

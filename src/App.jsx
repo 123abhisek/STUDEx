@@ -1,8 +1,12 @@
 // src/App.js
+
+// Import dependencies
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Import custom components
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
@@ -11,6 +15,9 @@ import Toolkit from './pages/Toolkit.jsx';
 import ShareStory from './pages/ShareStory.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import ContactUs from './pages/ContactUs.jsx';
+import Community from './pages/Community.jsx';
+import Notifications from './pages/Notifications.jsx';
+import Profile from './pages/Profile.jsx';
 
 // Create custom theme
 const theme = createTheme({
@@ -111,6 +118,9 @@ function App() {
               <Route path="/share" element={<ShareStory />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/contact" element={<ContactUs />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/notifications" element={<Notifications />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </main>
           <Footer />
