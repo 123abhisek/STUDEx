@@ -27,7 +27,7 @@ const ContactUs = () => {
   ];
 
   return (
-    <Container maxWidth="md" sx={{ py: 8 }}>
+    <Container maxWidth= "1rem" sx={{ py: 8 }}>
       <Box textAlign="center" mb={6}>
         <ContactMailIcon sx={{ fontSize: 60, color: 'primary.main', mb: 2 }} />
         <Typography variant="h2" gutterBottom>

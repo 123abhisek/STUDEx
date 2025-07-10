@@ -8,6 +8,7 @@ import {
 import SendIcon from '@mui/icons-material/Send';
 
 
+
 const ShareStory = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -56,7 +57,7 @@ const ShareStory = () => {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 8 }}>
+    <Container maxWidth= "1rem" sx={{ py: 8 }}>
       <Box textAlign="center" mb={6}>
         <Typography variant="h2" gutterBottom>
           Share Your Journey

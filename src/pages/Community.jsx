@@ -41,7 +41,7 @@ const Community = () => {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth= "1rem" sx={{ py: 8 }}>
       {/* Hero Section */}
       <Box textAlign="center" sx={{ mb: 8 }}>
         <ForumIcon sx={{ fontSize: 60, color: 'primary.main' }} />

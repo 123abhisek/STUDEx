@@ -1,4 +1,3 @@
-// src/components/Header.js
 import React, { useState, useEffect } from 'react';
 import {
   AppBar,
@@ -57,6 +56,7 @@ const Header = () => {
     { name: 'Success Stories', path: '/stories' },
     { name: 'Toolkit', path: '/toolkit' },
     { name: 'Community', path: '/community' },
+    { name: 'Social Feed', path: '/social-feed' },
     { name: 'About Us', path: '/about' },
   ];
 
@@ -130,21 +130,17 @@ const Header = () => {
                     to={item.path}
                     sx={{
                       mx: 0.5,
-                      color: location.pathname === item.path ? colors.primary : colors.typography,
+                      px: 2.5,
+                      py: 1.2,
+                      borderRadius: 10,
                       fontWeight: location.pathname === item.path ? 700 : 500,
-                      position: 'relative',
-                      '&:after': {
-                        content: '""',
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        height: location.pathname === item.path ? '3px' : '0px',
-                        backgroundColor: colors.accent,
-                        transition: 'height 0.2s ease'
-                      },
-                      '&:hover:after': {
-                        height: '3px'
+                      color: location.pathname === item.path ? colors.primary : colors.typography,
+                      backgroundColor: location.pathname === item.path ? colors.surface : 'transparent',
+                      boxShadow: location.pathname === item.path ? `0 2px 6px ${colors.primary}30` : 'none',
+                      textTransform: 'none',
+                      '&:hover': {
+                        backgroundColor: colors.surface,
+                        boxShadow: `0 2px 8px ${colors.primary}20`
                       }
                     }}
                   >
@@ -206,7 +202,7 @@ const Header = () => {
         </Container>
       </AppBar>
 
-      <Toolbar /> {/* Push content below fixed AppBar */}
+      <Toolbar />
 
       {/* Mobile Drawer */}
       <Drawer

@@ -26,7 +26,7 @@ const ITEMS_PER_PAGE = 6;
 const SuccessStories = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  // const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const [filter, setFilter] = useState("all");
   const [page, setPage] = useState(1);
@@ -123,19 +123,12 @@ const SuccessStories = () => {
     page * ITEMS_PER_PAGE
   );
 
-  // Responsive grid columns
-  // const getGridColumns = () => {
-  //   if (isMobile) return 12; // 1 card per row
-  //   if (isTablet) return 6;  // 2 cards per row
-  //   return 4;                // 3 cards per row
-  // };
-
   return (
     <Container
-      maxWidth="lg"
+      maxWidth="1rem"
       sx={{
-        py: isMobile ? 3 : 6,
-        px: isMobile ? 2 : 3,
+        py: isMobile ? 3 : 4,
+        px: isMobile ? 1.5 : 3,
       }}
     >
       <Typography
@@ -145,7 +138,8 @@ const SuccessStories = () => {
         gutterBottom
         sx={{
           fontSize: isMobile ? "1.75rem" : "2.5rem",
-          mt: isMobile ? 2 : 0,
+          mt: isMobile ? 1 : 0,
+          px: isMobile ? 1 : 0,
         }}
       >
         Student Success Stories
@@ -170,18 +164,26 @@ const SuccessStories = () => {
         alignItems={isMobile ? "flex-start" : "center"}
         mb={4}
         flexDirection={isMobile ? "column" : "row"}
-        gap={isMobile ? 2 : 0}
+        gap={2}
+        sx={{
+          backgroundColor: "background.paper",
+          p: 2,
+          borderRadius: 2,
+          boxShadow: 1,
+        }}
       >
         <Box display="flex" alignItems="center" gap={1}>
           <FilterListIcon color="primary" />
-          <Typography variant="subtitle1">Filter by Category</Typography>
+          <Typography variant="subtitle1" fontWeight={500}>
+            Filter by Category
+          </Typography>
         </Box>
         <FormControl
           size="small"
           sx={{
             minWidth: 160,
             mt: isMobile ? 1 : 0,
-            alignSelf: isMobile ? "flex-end" : "auto",
+            alignSelf: isMobile ? "stretch" : "auto",
           }}
         >
           <InputLabel>Category</InputLabel>
@@ -189,6 +191,7 @@ const SuccessStories = () => {
             value={filter}
             label="Category"
             onChange={(e) => setFilter(e.target.value)}
+            sx={{ bgcolor: "background.paper" }}
           >
             <MenuItem value="all">All</MenuItem>
             <MenuItem value="academic">Academic</MenuItem>
@@ -208,15 +211,48 @@ const SuccessStories = () => {
         </Typography>
       ) : (
         <>
-          <Grid container spacing={isMobile ? 2 : 4}>
+          <Grid container spacing={isMobile ? 2 : 3}>
             {paginatedStories.map((story) => (
-              <Grid item xs={12} sm={6} md={4} key={story.id}>
+              <Grid
+                item
+                key={story.id}
+                xs={12}
+                sm={6}
+                md={4}
+                sx={{ display: "flex" }}
+                justifyContent="center"
+                alignItems="stretch"
+                mb={4}
+                width={
+                  isMobile
+                    ? "100%"
+                    : isTablet
+                    ? "calc(50% - 16px)"
+                    : "calc(33.333% - 16px)"
+                }
+                maxWidth={
+                  isMobile
+                    ? "100%"
+                    : isTablet
+                    ? "calc(50% - 16px)"
+                    : "calc(33.333% - 16px)"
+                }
+                minWidth={
+                  isMobile
+                    ? "100%"
+                    : isTablet
+                    ? "calc(50% - 16px)"
+                    : "calc(33.333% - 16px)"
+                }
+                height="100%"
+              >
                 <Card
                   sx={{
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     transition: "0.3s",
+                    fullWidth: true,
                     "&:hover": {
                       transform: isMobile ? "none" : "translateY(-5px)",
                       boxShadow: isMobile ? 3 : 6,
@@ -225,12 +261,12 @@ const SuccessStories = () => {
                 >
                   <CardMedia
                     component="img"
-                    height={isMobile ? 160 : 200}
+                    height={isMobile ? 160 : 180}
                     image={story.imageUrl}
                     alt={story.title}
                     sx={{ objectFit: "cover" }}
                   />
-                  <CardContent sx={{ flexGrow: 1 }}>
+                  <CardContent sx={{ flexGrow: 1, p: isMobile ? 2 : 3 }}>
                     <Chip
                       label={story.category}
                       size="small"
@@ -255,11 +291,14 @@ const SuccessStories = () => {
                       variant="body2"
                       color="text.secondary"
                       paragraph
-                      sx={{ fontSize: isMobile ? "0.875rem" : "0.95rem" }}
+                      sx={{
+                        fontSize: isMobile ? "0.875rem" : "0.95rem",
+                        mb: 2,
+                      }}
                     >
                       {story.excerpt}
                     </Typography>
-                    <Box display="flex" flexWrap="wrap" gap={1} mt={1}>
+                    <Box display="flex" flexWrap="wrap" gap={1} mt="auto">
                       {story.tags.map((tag, i) => (
                         <Chip
                           key={i}
@@ -274,15 +313,16 @@ const SuccessStories = () => {
                       ))}
                     </Box>
                   </CardContent>
-                  <Box textAlign="center" pb={2} px={2}>
+                  <Box textAlign="center" pb={2} px={isMobile ? 1 : 2}>
                     <Button
                       variant="outlined"
                       color="primary"
-                      fullWidth={isMobile}
+                      fullWidth
                       onClick={() =>
                         (window.location.href = story.fullStoryUrl)
                       }
                       size={isMobile ? "small" : "medium"}
+                      sx={{ mx: "auto", maxWidth: isMobile ? "100%" : "90%" }}
                     >
                       Read Full Story
                     </Button>
@@ -293,7 +333,7 @@ const SuccessStories = () => {
           </Grid>
 
           {pageCount > 1 && !isLoading && (
-            <Box display="flex" justifyContent="center" mt={6}>
+            <Box display="flex" justifyContent="center" mt={5}>
               <Pagination
                 count={pageCount}
                 page={page}
@@ -315,9 +355,15 @@ const SuccessStories = () => {
 
       <Box
         textAlign="center"
-        mt={8}
-        mb={isMobile ? 4 : 0}
-        px={isMobile ? 2 : 0}
+        mt={7}
+        mb={isMobile ? 3 : 0}
+        px={isMobile ? 1 : 0}
+        sx={{
+          backgroundColor: "background.paper",
+          p: 4,
+          borderRadius: 2,
+          boxShadow: 1,
+        }}
       >
         <Typography
           variant={isMobile ? "h6" : "h5"}
@@ -337,6 +383,7 @@ const SuccessStories = () => {
             fontSize: isMobile ? "0.9rem" : "1rem",
             px: isMobile ? 3 : 4,
             py: isMobile ? 1 : 1.5,
+            minWidth: 200,
           }}
         >
           Share Your Journey

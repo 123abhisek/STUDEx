@@ -42,7 +42,7 @@ const Toolkit = () => {
   ];
 
   return (
-    <Container maxWidth="lg" sx={{ py: 8 }}>
+    <Container maxWidth= "1rem" sx={{ py: 8 }}>
       <Box textAlign="center" mb={6}>
         <Typography variant="h2" gutterBottom>
           Practical Tools for Progress
