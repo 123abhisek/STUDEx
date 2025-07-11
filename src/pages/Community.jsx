@@ -141,7 +141,7 @@ const Community = () => {
           variant="contained"
           color="secondary"
           size="large"
-          href="/signup"
+          href="/community"
           sx={{ px: 5, py: 1.5, borderRadius: '50px', fontSize: '1.1rem' }}
         >
           Join the Community

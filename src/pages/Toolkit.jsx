@@ -180,6 +180,7 @@ const Toolkit = () => {
             py: 1.5,
             px: 5,
           }}
+          href="/community"
         >
           Join the Community
         </Button>
