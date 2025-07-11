@@ -21,7 +21,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LockIcon from '@mui/icons-material/Lock';
 import EmailIcon from '@mui/icons-material/Email';
 import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
 import {useAuth} from '../context/AuthContext'; // Assuming you have an AuthContext for managing auth state
 
 
@@ -34,8 +34,8 @@ const AuthPage = () => {
   const [error, setError] = useState('');
   const theme = useTheme();
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
-  const { login } = useAuth(); // Assuming you have a login function in your AuthContext
 
   const handleSubmit = (e) => {
     e.preventDefault();
