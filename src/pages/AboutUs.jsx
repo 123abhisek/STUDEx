@@ -1,4 +1,3 @@
-// src/pages/AboutUs.js
 import React from "react";
 import {
   Container,
@@ -13,377 +12,413 @@ import {
   Button,
   useMediaQuery,
   useTheme,
+  Divider
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import GroupIcon from "@mui/icons-material/Group";
 import PublicIcon from "@mui/icons-material/Public";
+import StarIcon from "@mui/icons-material/Star";
 import { styled } from "@mui/material/styles";
 
-// Styled components for Material Design enhancements
+// Accent colors and background
+const colors = {
+  primary: "#253858", // deep blue
+  accent: "#2abbb0", // muted teal
+  accentBg: "#e8f5f4",
+  surface: "#fff",
+  gray: "#f7f9fa",
+  border: "#e0e7ef"
+};
+
+// Material value card
 const ValueCard = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(4),
+  padding: theme.spacing(4, 3),
   height: "100%",
-  borderRadius: "16px",
+  borderRadius: "15px",
   textAlign: "center",
+  background: colors.surface,
   transition: "transform 0.3s, box-shadow 0.3s",
-  "&:hover": { 
-    transform: "translateY(-8px)",
-    boxShadow: theme.shadows[8],
+  boxShadow: theme.shadows[2],
+  "&:hover": {
+    transform: "translateY(-4px) scale(1.025)",
+    boxShadow: theme.shadows[6],
   },
 }));
 
 const ImpactStat = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1),
   "& h2": {
-    textShadow: "0 2px 4px rgba(0,0,0,0.2)",
+    textShadow: "0 2px 4px rgba(0,0,0,0.13)",
+    fontWeight: 900,
   },
 }));
 
-const AboutUs = () => {
+export default function AboutUs() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  // const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
 
   const faqs = [
     {
       question: "How did STUDEx start?",
       answer:
-        "STUDEx was founded in 2023 after our founder struggled with academic burnout and direction during college. Unable to find relatable resources, they created this platform to help others.",
+        "STUDEx was founded after Shiv struggled with self-doubt, impostor syndrome, and culture shock at college. He later built the system and mindset that became the foundation of this platform.",
     },
     {
-      question: "Who shares stories on STUDEx?",
+      question: "Who shares stories here?",
       answer:
-        "Our stories come from real students and recent graduates who have faced and overcome challenges. All stories are verified before publication.",
+        "Real students and alumni—anyone who has been through academic self-doubt and wants to contribute to a more honest, practical, supportive culture.",
     },
     {
-      question: "Is STUDEx free to use?",
+      question: "Is STUDEx free?",
       answer:
-        "Yes! STUDEx is completely free for students. We believe support should be accessible to everyone.",
+        "Yes. This mission is about access and empowerment for as many students as possible—no cost, no gatekeeping.",
     },
     {
-      question: "How can I support STUDEx?",
+      question: "How can I support?",
       answer:
-        "You can support us by sharing your story, telling others about STUDEx, or contacting us about partnership opportunities.",
+        "Share your story, spread the word, or simply reach out. Allies—educators, professionals, or students—are always welcome.",
     },
   ];
 
   const values = [
     {
-      icon: <EmojiEventsIcon sx={{ fontSize: 60, color: "primary.main" }} />,
+      icon: <EmojiEventsIcon sx={{ fontSize: 56, color: colors.accent }} />,
       title: "Authenticity Over Perfection",
       description:
-        "We believe real stories of struggle and imperfect progress are more valuable than polished success narratives. Raw honesty creates true connection.",
+        "Real stories of struggle and growth matter more than polished narratives. We value honesty and vulnerability.",
     },
     {
-      icon: <GroupIcon sx={{ fontSize: 60, color: "primary.main" }} />,
+      icon: <GroupIcon sx={{ fontSize: 56, color: colors.accent }} />,
       title: "Community Support",
       description:
-        "Growth happens together. We foster a supportive environment where students lift each other up and share wisdom gained through experience.",
+        "Progress happens together. This is a space where students learn, encourage, and lift each other up.",
     },
     {
-      icon: <PublicIcon sx={{ fontSize: 60, color: "primary.main" }} />,
+      icon: <PublicIcon sx={{ fontSize: 56, color: colors.accent }} />,
       title: "Practical Empowerment",
       description:
-        "We focus on actionable strategies rather than abstract advice. Our tools are designed to create tangible progress in students' lives.",
+        "We provide actionable strategies and tools—not fluff—that build real progress and confidence.",
     },
   ];
 
+  
   return (
-    <Container maxWidth= "1rem" sx={{ py: isMobile ? 4 : 8, px: isMobile ? 2 : 4 }}>
-      {/* Hero Section */}
-      <Box textAlign="center" mb={isMobile ? 6 : 8}>
-        <Typography 
-          variant={isMobile ? "h3" : "h2"} 
-          gutterBottom
-          sx={{ 
-            fontWeight: 700,
-            color: "primary.dark",
-            fontSize: isMobile ? "2rem" : "2.75rem"
+    <Box sx={{ background: colors.gray, minHeight: "100vh" }}>
+      <Container maxWidth="md" sx={{ py: { xs: 4, md: 8 }, px: { xs: 2, md: 3 } }}>
+        {/* Hero — About the Founder */}
+        <Box
+          sx={{
+            background: colors.accentBg,
+            px: { xs: 2, sm: 5 },
+            py: { xs: 5, md: 7 },
+            borderRadius: "18px",
+            boxShadow: { xs: 1, md: 3 },
+            mb: { xs: 5, md: 8 }
           }}
         >
-          Our Mission to Transform Student Struggles
-        </Typography>
-        <Typography 
-          variant={isMobile ? "h6" : "h5"} 
-          color="text.secondary"
-          sx={{ 
-            maxWidth: 800,
-            mx: "auto",
-            fontSize: isMobile ? "1.1rem" : "1.4rem"
-          }}
-        >
-          Creating a world where every challenge becomes an opportunity for growth
-        </Typography>
-      </Box>
+          <Grid container spacing={4} alignItems="center">
+            <Grid item xs={12} md={4} textAlign="center">
+              <Avatar
+                src="https://www.shutterstock.com/image-photo/head-shot-portrait-close-smiling-600nw-1714666150.jpg" // Replace with real founder photo if available
+                alt="Dr. Sivananda (Shiv)"
+                sx={{
+                  width: 110,
+                  height: 110,
+                  border: `4px solid ${colors.accent}`,
+                  mx: "auto",
+                  boxShadow: "0 5px 32px rgba(42, 187, 176, 0.12)"
+                }}
+              />
+              <Typography fontWeight={700} mt={2} color={colors.primary} variant="h6">
+                Dr. Sivananda (Shiv)
+              </Typography>
+              <Typography
+                fontSize="0.95rem"
+                color="text.secondary"
+                sx={{ mt: 0.5, fontStyle: "italic" }}
+              >
+                Student Success Strategist · Technologist · Counselor
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={8}>
+              <Typography
+                variant="h4"
+                fontWeight={800}
+                color={colors.primary}
+                sx={{ mb: 1, fontSize: { xs: "1.35rem", md: "2rem" } }}
+              >
+                My Secret? For Most of My Life, I Felt Like an Impostor.
+              </Typography>
+              <Typography variant="body1" sx={{ color: colors.primary, mb: 3, fontSize: { xs: "1rem", md: "1.1rem" } }}>
+                Hello, I'm Dr. Sivananda (but please, call me Shiv). If you're reading this, you probably know the feeling—the quiet, nagging voice in your head that tells you you're not smart enough, that you don't belong, and that any day now, you'll be "found out."
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ mb: 1.5, fontSize: { xs: "0.98rem", md: "1.05rem" } }}>
+                I know that voice well. It was my constant companion for years. As a timid student, I always compared myself to others and came up short. College made that voice even louder. Having studied only in my native Telugu, I suddenly found myself in an English-speaking world where I felt like a fraud who'd slipped through the cracks.
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ mb: 1.5, fontSize: { xs: "0.97rem", md: "1.05rem" } }}>
+                There was no magic moment of inspiration. Instead, I made a decision: if I couldn't <b>feel</b> confident, I'd <b>build</b> a case for it. Through discipline and perseverance, I built a process and system that helped me through setbacks, layoffs, culture shock, and even grief. I learned that resilience isn't a gift—it's a muscle.
+              </Typography>
+              <Typography variant="body1" color="text.secondary" sx={{ mb: 1, fontSize: { xs: "0.97rem", md: "1.05rem" } }}>
+                After two decades in the tech world, a PhD, and years of counseling, my passion is now equipping students to build their own strategies—no pep talks, just practical tools that work in the real world.
+              </Typography>
+              <Typography variant="body1" sx={{ color: colors.primary, mt: 2 }}>
+                <b>My mission is simple:</b> to help you build your own evidence of competence, overcome the voice of doubt, and get the results you're truly capable of. Let's get to work.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Box>
 
-      {/* Our Story */}
-      <Grid 
-        container 
-        spacing={isMobile ? 4 : 6} 
-        alignItems="center" 
-        sx={{ mb: isMobile ? 6 : 8 }}
-        direction={isMobile ? "column-reverse" : "row"}
-      >
-        <Grid item xs={12} md={6}>
-          <Typography 
-            variant={isMobile ? "h4" : "h3"} 
-            gutterBottom 
-            sx={{ 
-              color: "primary.main",
-              fontWeight: 700,
-              fontSize: isMobile ? "1.5rem" : "2rem"
+        {/* Platform's Mission */}
+        <Box textAlign="center" mb={isMobile ? 6 : 8}>
+          <Typography
+            variant={isMobile ? "h3" : "h2"}
+            gutterBottom
+            sx={{
+              fontWeight: 800,
+              color: colors.primary,
+              fontSize: isMobile ? "2rem" : "2.4rem",
+              mb: "0.35em",
             }}
           >
-            Why STUDEx Exists
+            Our Mission: Transforming Student Self-Doubt into Growth
           </Typography>
-          <Typography variant="body1" paragraph sx={{ fontSize: isMobile ? "0.95rem" : "1.1rem" }}>
-            During my sophomore year, I hit rock bottom. Failing classes, losing motivation, and feeling completely directionless, I desperately searched for resources that understood what I was going through.
-          </Typography>
-          <Typography variant="body1" paragraph sx={{ fontSize: isMobile ? "0.95rem" : "1.1rem" }}>
-            All I found were generic advice articles and success stories that felt completely unattainable. What I needed was to hear from real students who had been where I was and found their way through.
-          </Typography>
-          <Typography variant="body1" paragraph sx={{ fontSize: isMobile ? "0.95rem" : "1.1rem" }}>
-            STUDEx was born from that frustration. We're creating the resource I wish I had — a platform where students share authentic stories of struggle and breakthrough, where practical tools meet genuine empathy, and where no one has to feel alone in their challenges.
-          </Typography>
-          <Box sx={{ display: "flex", alignItems: "center", mt: 3 }}>
-            <Avatar
-              alt="Founder"
-              src="https://randomuser.me/api/portraits/lego/2.jpg"
-              sx={{ width: 64, height: 64, mr: 2, boxShadow: 3 }}
-            />
-            <Box>
-              <Typography fontWeight={700} variant="h6">Abhishek</Typography>
-              <Typography variant="body2" color="text.secondary">Founder, STUDEx</Typography>
-            </Box>
-          </Box>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Box
+          <Typography
+            variant={isMobile ? "h6" : "h5"}
+            color="text.secondary"
             sx={{
-              borderRadius: "16px",
-              overflow: "hidden",
-              boxShadow: 6,
-              height: isMobile ? 300 : 450,
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1558024920-b76d22c0f2a4?auto=format&fit=crop&w=800&q=80)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
+              maxWidth: 760,
+              mx: "auto",
+              fontSize: isMobile ? "1.07rem" : "1.26rem",
             }}
-          />
-        </Grid>
-      </Grid>
+          >
+            We exist so students no longer have to face self-doubt, culture shock, or impostor feelings alone. Every tool, story, and resource here was designed for you to feel understood, supported, and equipped.
+          </Typography>
+        </Box>
 
-      {/* Our Core Values */}
-      <Box sx={{ mb: isMobile ? 6 : 8 }}>
-        <Typography
-          variant={isMobile ? "h4" : "h3"}
-          align="center"
-          gutterBottom
-          sx={{ 
-            color: "primary.main", 
-            mb: 6,
-            fontWeight: 700,
-            fontSize: isMobile ? "1.5rem" : "2rem"
+        {/* Core Values - Cards */}
+        <Box sx={{ mb: isMobile ? 6 : 8 }}>
+          <Typography
+            variant={isMobile ? "h4" : "h3"}
+            align="center"
+            gutterBottom
+            sx={{
+              color: colors.primary,
+              mb: 6,
+              fontWeight: 700,
+              fontSize: isMobile ? "1.5rem" : "2rem",
+            }}
+          >
+            Our Core Values
+          </Typography>
+          <Grid container spacing={4} justifyContent="center">
+            {values.map((val, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: "flex" }}>
+                <ValueCard elevation={3}>
+                  <Box sx={{ mb: 2 }}>{val.icon}</Box>
+                  <Typography
+                    variant="h6"
+                    gutterBottom
+                    sx={{ fontWeight: 700, fontSize: isMobile ? "1.17rem" : "1.25rem", color: colors.primary }}
+                  >
+                    {val.title}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{ fontSize: isMobile ? "0.98rem" : "1.07rem" }}
+                  >
+                    {val.description}
+                  </Typography>
+                </ValueCard>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* Impact Stats */}
+        <Box
+          sx={{
+            background: "linear-gradient(110deg, #2abbb0 0%, #28ada4 100%)",
+            color: "#fff",
+            borderRadius: "16px",
+            p: isMobile ? 3 : 5,
+            mb: isMobile ? 6 : 8,
+            textAlign: "center",
+            boxShadow: 4,
           }}
         >
-          Our Core Values
-        </Typography>
-        <Grid container spacing={4} justifyContent="center">
-          {values.map((val, index) => (
-            <Grid item xs={12} sm={10} md={4} key={index}>
-              <ValueCard elevation={3}>
-                <Box sx={{ mb: 3 }}>{val.icon}</Box>
-                <Typography 
-                  variant="h5" 
-                  gutterBottom 
-                  sx={{ 
+          <Typography
+            variant={isMobile ? "h4" : "h3"}
+            gutterBottom
+            sx={{ fontWeight: 800, letterSpacing: "-1px" }}
+          >
+            Our Impact So Far
+          </Typography>
+          <Grid
+            container
+            spacing={3}
+            sx={{ mt: 3 }}
+            justifyContent="center"
+            textAlign="center"
+          >
+            {[
+              { value: "1,450+", label: "Stories Shared" },
+              { value: "90%", label: "Feel Less Alone" },
+              { value: "94%", label: "Found Practical Help" },
+              { value: "18K+", label: "Monthly Visitors" },
+            ].map((stat, index) => (
+              <Grid item xs={6} sm={3} key={index}>
+                <ImpactStat>
+                  <Typography
+                    variant={isMobile ? "h3" : "h2"}
+                    sx={{ fontWeight: 800, mb: 1, color: "#fff" }}
+                  >
+                    <StarIcon sx={{ mb: -0.7, fontSize: 32, color: "#ffeb3b" }} /> {stat.value}
+                  </Typography>
+                  <Typography
+                    variant={isMobile ? "body1" : "h6"}
+                    sx={{ opacity: 0.92, fontWeight: 500, color: "#ecf7f6" }}
+                  >
+                    {stat.label}
+                  </Typography>
+                </ImpactStat>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* FAQ */}
+        <Box sx={{ mb: isMobile ? 4 : 6 }}>
+          <Typography
+            variant={isMobile ? "h4" : "h3"}
+            align="center"
+            gutterBottom
+            sx={{
+              color: colors.primary,
+              mb: 4,
+              fontWeight: 700,
+              fontSize: isMobile ? "1.4rem" : "1.7rem",
+            }}
+          >
+            Frequently Asked Questions
+          </Typography>
+          {faqs.map((faq, index) => (
+            <Accordion
+              key={index}
+              sx={{
+                mb: 2,
+                borderRadius: "8px !important",
+                boxShadow: "0 2px 14px 0 rgba(42,187,176, 0.07)",
+                "&:before": { display: "none" },
+              }}
+              elevation={0}
+            >
+              <AccordionSummary expandIcon={<ExpandMoreIcon sx={{ color: colors.accent }} />}>
+                <Typography
+                  variant="h6"
+                  sx={{
                     fontWeight: 600,
-                    fontSize: isMobile ? "1.25rem" : "1.5rem"
+                    fontSize: isMobile ? "1rem" : "1.1rem",
+                    color: colors.primary,
                   }}
                 >
-                  {val.title}
+                  {faq.question}
                 </Typography>
-                <Typography 
-                  variant="body1" 
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography
+                  variant="body1"
+                  sx={{ fontSize: isMobile ? "0.95rem" : "1.08rem" }}
                   color="text.secondary"
-                  sx={{ fontSize: isMobile ? "0.95rem" : "1.1rem" }}
                 >
-                  {val.description}
+                  {faq.answer}
                 </Typography>
-              </ValueCard>
-            </Grid>
+              </AccordionDetails>
+            </Accordion>
           ))}
-        </Grid>
-      </Box>
-
-      {/* Impact Stats */}
-      <Box
-        sx={{
-          background: "linear-gradient(135deg, #00695c 0%, #004d40 100%)",
-          color: "white",
-          borderRadius: "16px",
-          p: isMobile ? 3 : 5,
-          mb: isMobile ? 6 : 8,
-          textAlign: "center",
-          boxShadow: 4,
-        }}
-      >
-        <Typography 
-          variant={isMobile ? "h4" : "h3"} 
-          gutterBottom
-          sx={{ fontWeight: 700 }}
-        >
-          Our Impact So Far
-        </Typography>
-        <Grid
-          container
-          spacing={3}
-          sx={{ mt: 4 }}
-          justifyContent="center"
-          textAlign="center"
-        >
-          {[
-            { value: "1,200+", label: "Stories Shared" },
-            { value: "85%", label: "Feel Less Alone" },
-            { value: "92%", label: "Found Practical Help" },
-            { value: "10k+", label: "Monthly Visitors" },
-          ].map((stat, index) => (
-            <Grid item xs={6} sm={3} key={index}>
-              <ImpactStat>
-                <Typography 
-                  variant={isMobile ? "h3" : "h2"} 
-                  sx={{ fontWeight: 700, mb: 1 }}
-                >
-                  {stat.value}
-                </Typography>
-                <Typography 
-                  variant={isMobile ? "body1" : "h6"}
-                  sx={{ opacity: 0.9 }}
-                >
-                  {stat.label}
-                </Typography>
-              </ImpactStat>
-            </Grid>
-          ))}
-        </Grid>
-      </Box>
-
-      {/* FAQ */}
-      <Box sx={{ mb: isMobile ? 4 : 6 }}>
-        <Typography
-          variant={isMobile ? "h4" : "h3"}
-          align="center"
-          gutterBottom
-          sx={{ 
-            color: "primary.main", 
-            mb: 4,
-            fontWeight: 700,
-            fontSize: isMobile ? "1.5rem" : "2rem"
-          }}
-        >
-          Frequently Asked Questions
-        </Typography>
-        {faqs.map((faq, index) => (
-          <Accordion 
-            key={index} 
-            sx={{ 
-              mb: 2, 
-              borderRadius: "8px !important",
-              "&:before": { display: "none" }
-            }}
-            elevation={1}
-          >
-            <AccordionSummary expandIcon={<ExpandMoreIcon color="primary" />}>
-              <Typography 
-                variant="h6" 
-                sx={{ 
-                  fontWeight: 600,
-                  fontSize: isMobile ? "1rem" : "1.1rem"
-                }}
-              >
-                {faq.question}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography 
-                variant="body1"
-                sx={{ fontSize: isMobile ? "0.95rem" : "1.1rem" }}
-              >
-                {faq.answer}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
-        ))}
-      </Box>
-
-      {/* Final CTA */}
-      <Box
-        sx={{
-          backgroundColor: "secondary.light",
-          borderRadius: "16px",
-          p: isMobile ? 3 : 5,
-          textAlign: "center",
-          boxShadow: 2,
-        }}
-      >
-        <Typography 
-          variant={isMobile ? "h5" : "h4"} 
-          gutterBottom
-          sx={{ fontWeight: 700 }}
-        >
-          Join Our Movement
-        </Typography>
-        <Typography 
-          variant={isMobile ? "body1" : "h6"} 
-          sx={{ 
-            mb: 3, 
-            maxWidth: 700, 
-            mx: "auto",
-            fontSize: isMobile ? "1rem" : "1.2rem"
-          }}
-        >
-          Whether you're sharing your story, using our resources, or spreading
-          the word, you're helping transform student struggles into growth
-          opportunities.
-        </Typography>
-        <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 2 }}>
-          <Button
-            variant="contained"
-            color="primary"
-            size={isMobile ? "medium" : "large"}
-            href="/stories"
-            sx={{
-              fontWeight: 600,
-              py: isMobile ? 1 : 1.5,
-              px: isMobile ? 3 : 5,
-              minWidth: isMobile ? 160 : 200,
-              fontSize: isMobile ? "0.9rem" : "1rem",
-            }}
-          >
-            Read Stories
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            size={isMobile ? "medium" : "large"}
-            href="/share"
-            sx={{
-              fontWeight: 600,
-              py: isMobile ? 1 : 1.5,
-              px: isMobile ? 3 : 5,
-              minWidth: isMobile ? 160 : 200,
-              fontSize: isMobile ? "0.9rem" : "1rem",
-              borderWidth: 2,
-              "&:hover": { borderWidth: 2 },
-            }}
-          >
-            Share Your Story
-          </Button>
         </Box>
-      </Box>
-    </Container>
-  );
-};
+        <Divider sx={{ my: { xs: 3, md: 5 } }} />
 
-export default AboutUs;
+        {/* Final CTA */}
+        <Box
+          sx={{
+            background: colors.accentBg,
+            borderRadius: "18px",
+            p: { xs: 3.5, sm: 4.5 },
+            textAlign: "center",
+            boxShadow: 2,
+            mx: "auto"
+          }}
+        >
+          <Typography
+            variant={isMobile ? "h5" : "h4"}
+            gutterBottom
+            sx={{ fontWeight: 700, color: colors.primary }}
+          >
+            Join Our Movement
+          </Typography>
+          <Typography
+            variant={isMobile ? "body1" : "h6"}
+            sx={{
+              mb: 3,
+              maxWidth: 700,
+              mx: "auto",
+              fontSize: isMobile ? "1.02rem" : "1.13rem",
+              color: colors.primary,
+              opacity: 0.85,
+            }}
+          >
+            Whether you share your story, use our resources, or simply support a friend—thank you for helping transform self-doubt into growth.
+          </Typography>
+          <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 2 }}>
+            <Button
+              variant="contained"
+              color="primary"
+              size={isMobile ? "medium" : "large"}
+              href="/stories"
+              sx={{
+                fontWeight: 600,
+                py: isMobile ? 1.1 : 1.4,
+                px: isMobile ? 3.7 : 5.5,
+                minWidth: isMobile ? 155 : 200,
+                fontSize: isMobile ? "0.93rem" : "1.07rem",
+                borderRadius: "32px",
+                boxShadow: "0 2px 12px #2abbb033",
+                letterSpacing: 0.2,
+              }}
+            >
+              Read Stories
+            </Button>
+            <Button
+              variant="outlined"
+              color="primary"
+              size={isMobile ? "medium" : "large"}
+              href="/share"
+              sx={{
+                fontWeight: 600,
+                py: isMobile ? 1.1 : 1.4,
+                px: isMobile ? 3.7 : 5.5,
+                minWidth: isMobile ? 155 : 200,
+                fontSize: isMobile ? "0.93rem" : "1.07rem",
+                borderWidth: 2,
+                borderRadius: "32px",
+                boxShadow: "none",
+                letterSpacing: 0.18,
+                background: "#fff",
+                "&:hover": {
+                  borderWidth: 2,
+                  backgroundColor: colors.accentBg,
+                },
+              }}
+            >
+              Share Your Story
+            </Button>
+          </Box>
+        </Box>
+      </Container>
+    </Box>
+  );
+}
+
+

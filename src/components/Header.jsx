@@ -94,16 +94,58 @@ const Header = () => {
         position="fixed"
         elevation={scrolled ? 4 : 0}
         sx={{
-          backgroundColor: scrolled ? colors.surface : "transparent",
-          backdropFilter: scrolled ? "blur(10px)" : "none",
+          width: "100vw",
+          left: 0,
+          top: 0,
           boxShadow: "none",
-          transition: "all 0.3s ease",
+          background: "none", // Transparent main background
           py: 1,
           borderBottom: scrolled ? `1px solid ${colors.background}` : "none",
+
+          // Pseudo-element for full-bleed blurred background image
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100%",
+            zIndex: 0,
+            // backgroundImage:
+            // "url('https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            filter: "blur(12px)", // <-- Blurs background image
+            opacity: 1,
+            pointerEvents: "none", // Keeps nav interactive
+            backgroundColor: "#F0F0F0", // Optional: adds a light tint
+            transition: "opacity 0.3s ease-in-out",
+          },
+
+          // Overlay for frosted glass effect, above blurred image
+          "&::after": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100%",
+            zIndex: 1,
+            background: "rgba(255,255,255,0.65)", // Semi-transparent, feel free to tweak alpha
+            backdropFilter: "blur(8px)", // Further strengthens the frosted look
+            pointerEvents: "none",
+          },
         }}
       >
-        <Container maxWidth="lg">
-          <Toolbar disableGutters>
+        <Container
+          maxWidth="lg"
+          sx={{
+            position: "relative",
+            zIndex: 2, // Ensures nav items are above overlays/background
+          }}
+        >
+          <Toolbar disableGutters sx={{ minHeight: 0, height: 0, padding: 0 }}>
             <Typography
               variant="h5"
               component={Link}
@@ -143,7 +185,7 @@ const Header = () => {
                       mx: 0.5,
                       px: 2.5,
                       py: 1.2,
-                      borderRadius: 10,
+                      borderRadius: 18, // slightly rounder like home buttons
                       fontWeight: location.pathname === item.path ? 700 : 500,
                       color:
                         location.pathname === item.path
@@ -151,16 +193,27 @@ const Header = () => {
                           : colors.typography,
                       backgroundColor:
                         location.pathname === item.path
-                          ? colors.surface
+                          ? "rgba(255,255,255,0.91)"
                           : "transparent",
                       boxShadow:
                         location.pathname === item.path
-                          ? `0 2px 6px ${colors.primary}30`
+                          ? `0 4px 16px ${colors.primary}10`
                           : "none",
                       textTransform: "none",
+                      transition:
+                        "background 0.22s, color 0.22s, box-shadow 0.25s, transform 0.15s, border 0.19s",
+
                       "&:hover": {
-                        backgroundColor: colors.surface,
-                        boxShadow: `0 2px 8px ${colors.primary}20`,
+                        backgroundColor: "rgba(205,220,57,0.21)", // subtle accent tint (matches home accent style)
+                        color: colors.primary,
+                        boxShadow: `0 6px 32px ${colors.primary}09`, // soft shadow
+                        transform: "translateY(-2px) scale(1.045)", // slight pop effect
+                        border: `1.5px solid ${colors.accent}`,
+                        backdropFilter: "blur(1.5px)", // soft focus
+                      },
+                      "&:active": {
+                        boxShadow: `0 1px 4px ${colors.primary}22`,
+                        transform: "scale(0.97)",
                       },
                     }}
                   >
@@ -192,10 +245,14 @@ const Header = () => {
                         fontWeight: 700,
                         borderRadius: "50px",
                         px: 3,
+                        transition:
+                          "background 0.21s, box-shadow 0.25s, transform 0.14s",
+                        boxShadow: `0 2px 8px ${colors.accent}55`,
                         "&:hover": {
-                          backgroundColor: "#c0ca33",
-                          transform: "translateY(-2px)",
-                          boxShadow: `0 4px 8px ${colors.accent}80`,
+                          backgroundColor: "#e5ec7b",
+                          color: colors.primary, // for high contrast
+                          boxShadow: `0 7px 30px ${colors.accent}55`,
+                          transform: "translateY(-3px) scale(1.05)",
                         },
                       }}
                       component={Link}

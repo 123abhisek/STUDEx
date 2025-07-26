@@ -1,984 +1,1150 @@
+// // src/pages/Home.js
+// import React, { useRef } from "react";
+// import {
+//   Box,
+//   Container,
+//   Grid,
+//   Typography,
+//   Button,
+//   TextField,
+//   InputAdornment,
+//   Paper,
+// } from "@mui/material";
+// import EmailIcon from "@mui/icons-material/Email";
+// import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+// import AssignmentIcon from "@mui/icons-material/Assignment";
+// import MailOutlineIcon from "@mui/icons-material/MailOutline";
+// import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+
+// // COLORS (can move to theme)
+// const colors = {
+//   primary: "#253858", // deep blue
+//   gray: "#EEEEF7",
+//   accent: "#2abbb0", // muted teal (action color)
+//   accentDark: "#229a94",
+//   white: "#fff",
+//   bodyText: "#2f2f2f",
+//   subtle: "#888",
+// };
+
+// function HandDrawnCheck({ color = colors.accent, sx = {} }) {
+//   // Simple SVG for hand-drawn check
+//   return (
+//     <svg width="26" height="26" viewBox="0 0 26 26" style={sx}>
+//       <circle
+//         cx="13"
+//         cy="13"
+//         r="12"
+//         stroke={color}
+//         strokeWidth="2"
+//         fill="none"
+//       />
+//       <polyline
+//         points="8,14.5 12,18 18,10"
+//         stroke={color}
+//         strokeWidth="2.5"
+//         fill="none"
+//         strokeLinecap="round"
+//         strokeLinejoin="round"
+//       />
+//     </svg>
+//   );
+// }
+
+// const checklistItems = [
+//   [
+//     "You downplay your success. You say things like 'it wasn’t that hard' or 'anyone could have done it.'",
+//     "You dread being called on in class. Even when you know the answer, you’re terrified of getting it wrong.",
+//     "You procrastinate on big projects. The fear of the final product not being perfect is paralyzing.",
+//     "You don’t apply for things unless you meet 110% of the qualifications.",
+//   ],
+//   [
+//     "You find it hard to accept a compliment. Your first instinct is to deflect it or point out a flaw.",
+//     "You compare yourself constantly to your classmates and always feel like you’re behind.",
+//     "You avoid asking for help. You’re worried it will expose you as incompetent.",
+//     "You feel relief, not pride, after finishing a huge task. The main feeling is 'Phew, I didn’t get caught.'",
+//   ],
+// ];
+
+// const tools = [
+//   {
+//     title: "Evidence Log",
+//     icon: <AssignmentIcon sx={{ fontSize: 36, color: colors.accentDark }} />,
+//     description:
+//       "A simple log to scientifically prove your achievements aren’t just luck. Your brain’s best defense against the “I’m a fraud” feeling.",
+//   },
+//   {
+//     title: "'Smart Question' Scripts",
+//     icon: <MailOutlineIcon sx={{ fontSize: 36, color: colors.accentDark }} />,
+//     description:
+//       "Copy-and-paste scripts for emailing professors and speaking up in class without the fear of “looking dumb.”",
+//   },
+//   {
+//     title: "Failure Resume",
+//     icon: <EmojiEventsIcon sx={{ fontSize: 36, color: colors.accentDark }} />,
+//     description:
+//       "A worksheet to reframe your mistakes as proof of resilience, not weakness.",
+//   },
+// ];
+
+// export default function Home() {
+//   const checklistRef = useRef(null);
+//   const handleScrollToChecklist = () => {
+//     checklistRef.current?.scrollIntoView({ behavior: "smooth" });
+//   };
+
+//   return (
+//     <Box
+//       sx={{
+//         width: "100vw",
+//         overflowX: "hidden",
+//         backgroundColor: colors.white,
+//         minHeight: "100vh",
+//         mt: -1,
+//       }}
+//     >
+//       <Box
+//         sx={{
+//           width: "100%",
+//           maxWidth: "100%",
+//           minHeight: "100vh",
+//           boxSizing: "border-box",
+//           display: "flex",
+//           alignItems: "center",
+//           position: "relative",
+//           backgroundImage:
+//             "url('https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80')",
+//           backgroundSize: "cover",
+//           backgroundPosition: "center",
+//           backgroundRepeat: "no-repeat",
+//           px: { xs: 0, md: 0 },
+//           "&::before": {
+//             content: '""',
+//             position: "absolute",
+//             top: 0,
+//             left: 0,
+//             right: 0,
+//             bottom: 0,
+//             backgroundColor: "rgba(255,255,255,0.4)",
+//             zIndex: 0,
+//           },
+//         }}
+//       >
+//         <Container
+//           maxWidth={false}
+//           sx={{
+//             width: "100%",
+//             maxWidth: "720px",
+//             mx: "auto",
+//             px: { xs: 2, sm: 4, md: 6 },
+//             position: "relative",
+//             zIndex: 1,
+//             pt: 12,
+//             pb: 8,
+//             display: "flex",
+//             flexDirection: "column",
+//             alignItems: { xs: "flex-start", md: "center" },
+//             textAlign: { xs: "left", md: "center" },
+//           }}
+//         >
+//           <Typography
+//             variant="h2"
+//             gutterBottom
+//             sx={{
+//               fontFamily: "Montserrat, Lato, sans-serif",
+//               fontWeight: 800,
+//               fontSize: { xs: "2rem", sm: "2.7rem", md: "3.2rem" },
+//               color: colors.primary,
+//             }}
+//           >
+//             Ever get a good grade and think,&nbsp;
+//             <Box
+//               component="span"
+//               sx={{
+//                 color: colors.accent,
+//                 fontFamily: "inherit",
+//                 borderBottom: `3px solid ${colors.accent}`,
+//                 display: "inline-block",
+//                 pb: 0.2,
+//               }}
+//             >
+//               "I just got lucky"?
+//             </Box>
+//           </Typography>
+//           <Typography
+//             variant="h6"
+//             sx={{
+//               fontFamily: "Lora, Merriweather, serif",
+//               color: colors.bodyText,
+//               maxWidth: 500,
+//               mb: 5,
+//             }}
+//           >
+//             That feeling isn&apos;t a personality flaw. It&apos;s a pattern. And
+//             it can be broken.
+//           </Typography>
+//           <Button
+//             variant="contained"
+//             size="large"
+//             onClick={handleScrollToChecklist}
+//             sx={{
+//               fontWeight: 700,
+//               borderRadius: "32px",
+//               px: 5,
+//               py: 1.5,
+//               background: colors.accent,
+//               boxShadow: "none",
+//               fontSize: "1.15rem",
+//               "&:hover": {
+//                 background: colors.accentDark,
+//               },
+//               letterSpacing: 1,
+//             }}
+//           >
+//             FIND OUT IF THIS IS YOU
+//           </Button>
+//         </Container>
+//       </Box>
+
+//       {/* Section 2: The Checklist */}
+//       <Box
+//         ref={checklistRef}
+//         sx={{
+//           py: { xs: 6, md: 10 },
+//           background: "#fcfcfc",
+//           borderTop: `1px solid ${colors.gray}`,
+//           borderBottom: `1px solid ${colors.gray}`,
+//         }}
+//       >
+//         <Container maxWidth="md">
+//           <Typography
+//             variant="h4"
+//             gutterBottom
+//             sx={{
+//               fontFamily: "Montserrat, Lato, sans-serif",
+//               fontWeight: 700,
+//               color: colors.primary,
+//               textAlign: "center",
+//               mb: 5,
+//               fontSize: { xs: "1.5rem", md: "2.2rem" },
+//             }}
+//           >
+//             Which of These Sound Familiar?
+//           </Typography>
+//           <Grid container spacing={4}>
+//             {checklistItems.map((col, idx) => (
+//               <Grid item xs={12} md={6} key={idx}>
+//                 <Box component="ul" sx={{ p: 0, m: 0, listStyle: "none" }}>
+//                   {col.map((item, i) => (
+//                     <li
+//                       key={i}
+//                       style={{
+//                         display: "flex",
+//                         alignItems: "flex-start",
+//                         marginBottom: 22,
+//                       }}
+//                     >
+//                       {/* Replace with a more hand-drawn look check if desired */}
+//                       <Box sx={{ mr: 2, mt: "2px" }}>
+//                         <HandDrawnCheck sx={{ verticalAlign: "middle" }} />
+//                       </Box>
+//                       <Typography
+//                         component="span"
+//                         sx={{
+//                           fontFamily: "Lora, Merriweather, serif",
+//                           color: colors.bodyText,
+//                           fontSize: "1.07rem",
+//                           lineHeight: 1.7,
+//                         }}
+//                       >
+//                         {item}
+//                       </Typography>
+//                     </li>
+//                   ))}
+//                 </Box>
+//               </Grid>
+//             ))}
+//           </Grid>
+//         </Container>
+//       </Box>
+
+//       {/* Section 3: The Diagnosis & Reframe */}
+//       <Box
+//         sx={{
+//           py: { xs: 7, md: 9 },
+//           background: colors.gray,
+//         }}
+//       >
+//         <Container maxWidth="sm">
+//           <Paper
+//             elevation={2}
+//             sx={{
+//               p: { xs: 4, sm: 5 },
+//               background: "#f5f7fc",
+//               borderRadius: "18px",
+//               borderLeft: `6px solid ${colors.accent}`,
+//               textAlign: "center",
+//             }}
+//           >
+//             <Typography
+//               variant="h5"
+//               sx={{
+//                 fontFamily: "Montserrat, Lato, sans-serif",
+//                 fontWeight: 700,
+//                 mb: 2,
+//                 color: colors.primary,
+//                 fontSize: { xs: "1.2rem", sm: "1.6rem" },
+//               }}
+//             >
+//               If you nodded along, you&apos;re not a failure.
+//               <br />
+//               You&apos;re just experiencing Impostor Syndrome.
+//             </Typography>
+//             <Typography
+//               sx={{
+//                 fontFamily: "Lora, Merriweather, serif",
+//                 color: colors.bodyText,
+//                 fontSize: { xs: "1rem", sm: "1.13rem" },
+//                 opacity: 0.97,
+//               }}
+//             >
+//               It&apos;s the overwhelming feeling that you&apos;re a fraud,
+//               despite all the evidence showing you&apos;re capable.
+//               <br />
+//               It&apos;s not a character flaw. It&apos;s a strategy problem. And
+//               because it&apos;s a problem with a pattern, it&apos;s a problem
+//               with a solution.
+//             </Typography>
+//           </Paper>
+//         </Container>
+//       </Box>
+
+//       {/* Section 4: The Promise (Solution/Tools) */}
+//       <Box sx={{ py: { xs: 7, md: 10 }, background: "#fff" }}>
+//         <Container maxWidth="md">
+//           <Typography
+//             variant="h4"
+//             gutterBottom
+//             sx={{
+//               fontFamily: "Montserrat, Lato, sans-serif",
+//               fontWeight: 700,
+//               color: colors.primary,
+//               textAlign: "center",
+//               mb: 2,
+//               fontSize: { xs: "1.3rem", md: "2rem" },
+//             }}
+//           >
+//             You Can&apos;t &quot;Think&quot; Your Way Out of This. You Have to
+//             Act.
+//           </Typography>
+//           <Typography
+//             variant="subtitle1"
+//             sx={{
+//               textAlign: "center",
+//               mb: 6,
+//               color: colors.subtle,
+//               fontFamily: "Lora, Merriweather, serif",
+//               fontSize: { xs: "1rem", md: "1.19rem" },
+//             }}
+//           >
+//             We don&apos;t do motivational quotes. We build practical tools to
+//             give your brain the hard evidence it needs.
+//           </Typography>
+//           <Grid container spacing={5}>
+//             {tools.map((tool) => (
+//               <Grid  item xs={12} sm={4} key={tool.title} sx={{ display: "flex" , width: "100%" }}>
+//                 <Box
+//                   sx={{
+//                     p: 3,
+//                     background: colors.gray,
+//                     borderRadius: "16px",
+//                     textAlign: "center",
+//                     height: "100%",
+//                     boxShadow: "0 3px 20px 0 rgba(30,30,50,0.07)",
+//                   }}
+//                 >
+//                   {tool.icon}
+//                   <Typography
+//                     variant="h6"
+//                     sx={{
+//                       fontFamily: "Montserrat, Lato, sans-serif",
+//                       color: colors.primary,
+//                       fontWeight: 700,
+//                       mt: 2,
+//                       mb: 1,
+//                       fontSize: "1.12rem",
+//                     }}
+//                   >
+//                     {tool.title}
+//                   </Typography>
+//                   <Typography
+//                     sx={{
+//                       fontFamily: "Lora, Merriweather, serif",
+//                       color: colors.bodyText,
+//                       fontSize: "1rem",
+//                       opacity: 0.95,
+//                     }}
+//                   >
+//                     {tool.description}
+//                   </Typography>
+//                 </Box>
+//               </Grid>
+//             ))}
+//           </Grid>
+//           <Box textAlign="center" sx={{ mt: 6 }}>
+//             <Button
+//               component="a"
+//               href="/toolkit"
+//               variant="contained"
+//               sx={{
+//                 background: colors.accent,
+//                 fontWeight: 700,
+//                 letterSpacing: 1,
+//                 px: 5,
+//                 py: 1.5,
+//                 borderRadius: "32px",
+//                 fontSize: "1.11rem",
+//                 "&:hover": {
+//                   background: colors.accentDark,
+//                 },
+//                 boxShadow: "none",
+//               }}
+//             >
+//               BROWSE ALL TOOLS
+//             </Button>
+//           </Box>
+//         </Container>
+//       </Box>
+
+//       {/* Section 5: The Call to Action (Email Capture) */}
+//       <Box
+//         sx={{
+//           background: colors.accent,
+//           py: { xs: 8, md: 10 },
+//           borderTopLeftRadius: "40px",
+//           borderTopRightRadius: "40px",
+//         }}
+//       >
+//         <Container maxWidth="sm">
+//           <Box sx={{ textAlign: "center", color: "#fff" }}>
+//             <Typography
+//               variant="h4"
+//               gutterBottom
+//               sx={{
+//                 fontFamily: "Montserrat, Lato, sans-serif",
+//                 fontWeight: 800,
+//                 fontSize: { xs: "1.3rem", md: "2rem" },
+//               }}
+//             >
+//               Stop Fighting Alone. Start Building Your Strategy.
+//             </Typography>
+//             <Typography
+//               variant="subtitle1"
+//               sx={{
+//                 fontFamily: "Lora, Merriweather, serif",
+//                 color: "#f4f9f9",
+//                 mb: 4,
+//                 opacity: 0.97,
+//                 fontSize: { xs: "1rem", md: "1.2rem" },
+//               }}
+//             >
+//               Get my free Impostor Syndrome First-Aid Kit.
+//               <br />
+//               It includes 3 simple tools you can use today to start gathering
+//               evidence and quieting that voice in your head.
+//             </Typography>
+//             <Box
+//               component="form"
+//               sx={{
+//                 display: "flex",
+//                 gap: 2,
+//                 flexDirection: { xs: "column", sm: "row" },
+//                 justifyContent: "center",
+//                 mt: 3,
+//               }}
+//               autoComplete="off"
+//               onSubmit={(e) => {
+//                 e.preventDefault();
+//                 // handle form submit
+//               }}
+//             >
+//               <TextField
+//                 variant="outlined"
+//                 placeholder="Enter your email address"
+//                 type="email"
+//                 required
+//                 sx={{
+//                   flex: 1,
+//                   background: "#fff",
+//                   borderRadius: "30px",
+//                   "& .MuiOutlinedInput-root": {
+//                     borderRadius: "30px",
+//                     fontFamily: "Lora, Merriweather, serif",
+//                   },
+//                   boxShadow: "none",
+//                   minWidth: "220px",
+//                 }}
+//                 InputProps={{
+//                   startAdornment: (
+//                     <InputAdornment position="start">
+//                       <EmailIcon sx={{ color: colors.accentDark }} />
+//                     </InputAdornment>
+//                   ),
+//                 }}
+//               />
+//               <Button
+//                 type="submit"
+//                 variant="contained"
+//                 sx={{
+//                   borderRadius: "30px",
+//                   background: "#222a32",
+//                   color: "#fff",
+//                   fontWeight: 700,
+//                   px: 4,
+//                   py: 1.4,
+//                   letterSpacing: 1,
+//                   fontSize: "1rem",
+//                   "&:hover": {
+//                     background: "#1a202a",
+//                   },
+//                   minWidth: "180px",
+//                 }}
+//               >
+//                 SEND ME THE KIT
+//               </Button>
+//             </Box>
+//           </Box>
+//         </Container>
+//       </Box>
+//     </Box>
+//   );
+// }
+
 // src/pages/Home.js
-import React, { useEffect } from "react";
+import React, { useRef } from "react";
 import {
   Box,
   Container,
   Grid,
   Typography,
   Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Chip,
+  TextField,
+  InputAdornment,
+  Paper,
   Grow,
+  Slide,
   Fade,
   Zoom,
-  Slide,
-  keyframes,
-  Avatar,
-  Divider,
-  IconButton
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import {
-  EmojiObjects,
-  Group,
-  TrendingUp,
-  School,
-  Favorite,
-  ChatBubble,
-  Facebook,
-  Twitter,
-  Instagram,
-  LinkedIn,
-  ArrowForward
-} from "@mui/icons-material";
+import EmailIcon from "@mui/icons-material/Email";
+import AssignmentIcon from "@mui/icons-material/Assignment";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import { useInView } from "react-intersection-observer";
 
-// Color palette
+// COLORS
 const colors = {
-  primary: "#3F51B5",
-  secondary: "#00BCD4",
-  accent: "#CDDC39",
-  background: "#F5F5F5",
-  surface: "#FFFFFF",
-  typography: "#212121",
-  subtext: "#757575",
-  error: "#f44336",
-  success: "#4caf50"
+  primary: "#253858", // deep blue
+  gray: "#f0f2f5",
+  accent: "#2abbb0", // muted teal
+  accentDark: "#229a94",
+  white: "#fff",
+  bodyText: "#2f2f2f",
+  subtle: "#888",
 };
 
-// Animation keyframes
-const float = keyframes`
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-`;
+function HandDrawnCheck({ color = colors.accent }) {
+  return (
+    <svg width="26" height="26" viewBox="0 0 26 26">
+      <circle
+        cx="13"
+        cy="13"
+        r="12"
+        stroke={color}
+        strokeWidth="2"
+        fill="none"
+      />
+      <polyline
+        points="8,14.5 12,18 18,10"
+        stroke={color}
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
-// const pulse = keyframes`
-//   0% { transform: scale(1); }
-//   50% { transform: scale(1.05); }
-//   100% { transform: scale(1); }
-// `;
+const checklistItems = [
+  [
+    "You downplay your success. You say things like 'it wasn't that hard' or 'anyone could have done it.'",
+    "You dread being called on in class. Even when you know the answer, you're terrified of getting it wrong.",
+    "You procrastinate on big projects. The fear of the final product not being perfect is paralyzing.",
+    "You don't apply for things unless you meet 110% of the qualifications.",
+  ],
+  [
+    "You find it hard to accept a compliment. Your first instinct is to deflect it or point out a flaw.",
+    "You compare yourself constantly to your classmates and always feel like you're behind.",
+    "You avoid asking for help. You're worried it will expose you as incompetent.",
+    "You feel relief, not pride, after finishing a huge task. The main feeling is 'Phew, I didn't get caught.'",
+  ],
+];
 
-// const gradientShift = keyframes`
-//   0% { background-position: 0% 50%; }
-//   50% { background-position: 100% 50%; }
-//   100% { background-position: 0% 50%; }
-// `;
+const tools = [
+  {
+    title: "Evidence Log",
+    icon: <AssignmentIcon sx={{ fontSize: 36, color: colors.accentDark }} />,
+    description:
+      "A simple log to scientifically prove your achievements aren't just luck. Your brain's best defense against the 'I'm a fraud' feeling.",
+  },
+  {
+    title: "'Smart Question' Scripts",
+    icon: <MailOutlineIcon sx={{ fontSize: 36, color: colors.accentDark }} />,
+    description:
+      "Copy-and-paste scripts for emailing professors and speaking up in class without the fear of 'looking dumb.'",
+  },
+  {
+    title: "Failure Resume",
+    icon: <EmojiEventsIcon sx={{ fontSize: 36, color: colors.accentDark }} />,
+    description:
+      "A worksheet to reframe your mistakes as proof of resilience, not weakness.",
+  },
+];
 
-const Home = () => {
-  // Sample data
-  const featuredStories = [
-    {
-      id: "1",
-      image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      title: "From Dropout to Dean's List",
-      category: "Academic",
-      excerpt: "How I overcame academic probation...",
-      avatar: "https://randomuser.me/api/portraits/women/32.jpg"
-    },
-    {
-      id: "2",
-      image: "https://plus.unsplash.com/premium_photo-1745543851241-38ab13a5dd41?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "Finding My Passion After Failure",
-      category: "Career",
-      excerpt: "Failed my internship but found my true calling...",
-      avatar: "https://randomuser.me/api/portraits/men/44.jpg"
-    },
-    {
-      id: "3",
-      image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      title: "Breaking Through Depression",
-      category: "Personal",
-      excerpt: "My journey with mental health in college...",
-      avatar: "https://randomuser.me/api/portraits/women/67.jpg"
-    },
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      quote: "STUDEx helped me realize I wasn't alone in my struggles. The community support was invaluable during my toughest times.",
-      author: "Alex, Sophomore",
-      role: "Computer Science"
-    },
-    {
-      id: 2,
-      quote: "The toolkit gave me practical steps to overcome procrastination. I've improved my GPA by 1.5 points since joining!",
-      author: "Jamie, Senior",
-      role: "Psychology"
-    },
-    {
-      id: 3,
-      quote: "Sharing my story was therapeutic and helped others too. I've made genuine connections through this platform.",
-      author: "Taylor, Alumni",
-      role: "Business Administration"
-    },
-  ];
-
-  const stats = [
-    { value: "2K+", label: "Success Stories", icon: <Favorite /> },
-    { value: "95%", label: "Reported Improvement", icon: <TrendingUp /> },
-    { value: "300+", label: "Resources", icon: <School /> },
-    { value: "10K+", label: "Community Members", icon: <Group /> }
-  ];
-
-  const features = [
-    {
-      title: "Personalized Roadmaps",
-      description: "Create custom plans to overcome your specific challenges with our step-by-step guidance."
-    },
-    {
-      title: "Progress Tracking",
-      description: "Monitor your journey with visual progress indicators and milestone celebrations."
-    },
-    {
-      title: "Peer Support Groups",
-      description: "Join small groups of students facing similar challenges for mutual support."
-    },
-    {
-      title: "Expert Q&A Sessions",
-      description: "Get answers to your questions from academic advisors and mental health professionals."
-    }
-  ];
-
-  // Scroll reveal effect
-  useEffect(() => {
-    const scrollElements = document.querySelectorAll(".scroll-reveal");
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animated");
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    scrollElements.forEach(el => observer.observe(el));
-    
-    return () => scrollElements.forEach(el => observer.unobserve(el));
-  }, []);
+const ChecklistItem = ({ text }) => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   return (
-    <Box sx={{ overflow: 'hidden', backgroundColor: colors.background }}>
-      {/* Hero Section */}
-     <Box 
-      sx={{
-        background: `linear-gradient(135deg, ${colors.primary}, ${colors.primary}dd)`,
-        color: 'white',
-        py: 10,
-        position: 'relative',
-        overflow: 'hidden',
-        '&:before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle, transparent 20%, rgba(0,0,0,0.1) 20%)',
-          backgroundSize: '30px 30px',
-          opacity: 0.3,
-          zIndex: 0,
-        }
-      }}
-    >
-      <Grid container justifyContent="center">
-        <Grid item xs={12} md={6} sx={{ p: 4, position: 'relative', zIndex: 1 }}>
-          <Typography 
-            variant="h1" 
-            sx={{ 
-              fontWeight: 800,
-              fontSize: { xs: '2.5rem', sm: '3.5rem', md: '4rem' },
-              lineHeight: 1.2,
-              mb: 2,
-              textShadow: '0 2px 10px rgba(0,0,0,0.2)'
-            }}
-          >
-            Turn Your <Box component="span" sx={{ color: colors.secondary }}>Struggles</Box> Into Strength
-          </Typography>
-          
-          <Typography 
-            variant="h5" 
-            sx={{ 
-              mb: 4, 
-              opacity: 0.9,
-              maxWidth: '600px',
-              textShadow: '0 1px 3px rgba(0,0,0,0.2)'
-            }}
-          >
-            Real student stories, practical tools, and a supportive community to help you navigate academic challenges
-          </Typography>
-          
-          <Box sx={{ display: 'flex', gap: 3, flexWrap: 'wrap', mb: 4 }}>
-            <Button
-              variant="contained"
-              size="large"
-              component={Link}
-              to="/share"
-              sx={{
-                fontSize: "1.1rem",
-                py: 1.5,
-                px: 4,
-                fontWeight: 700,
-                backgroundColor: colors.accent,
-                color: colors.typography,
-                animation: `${float} 4s ease-in-out infinite`,
-                '&:hover': {
-                  backgroundColor: '#c0ca33',
-                  transform: 'translateY(-3px)',
-                  boxShadow: `0 6px 15px ${colors.accent}80`,
-                },
-                boxShadow: `0 4px 20px ${colors.accent}80`,
-                transition: 'all 0.3s ease',
-                borderRadius: '50px',
-              }}
-            >
-              Share Your Story
-            </Button>
-            
-            <Button
-              variant="outlined"
-              color="inherit"
-              size="large"
-              component={Link}
-              to="/stories"
-              sx={{
-                borderWidth: 2,
-                fontSize: "1.1rem",
-                py: 1.5,
-                px: 4,
-                fontWeight: 700,
-                transition: 'all 0.3s ease',
-                borderRadius: '50px',
-                '&:hover': {
-                  transform: 'translateY(-3px)',
-                  backgroundColor: 'rgba(255,255,255,0.1)',
-                  borderWidth: 2,
-                  boxShadow: `0 4px 10px ${colors.secondary}80`,
-                }
-              }}
-            >
-              Explore Stories
-            </Button>
-          </Box>
-          
-          <Box sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: 2,
-            backgroundColor: 'rgba(255,255,255,0.15)',
-            p: 2,
-            borderRadius: '50px',
-            width: 'fit-content',
-            backdropFilter: 'blur(5px)'
-          }}>
-            <Box sx={{ 
-              width: 50, 
-              height: 50, 
-              borderRadius: '50%', 
-              backgroundColor: colors.accent,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              animation: `${float} 4s ease-in-out infinite`,
-              animationDelay: '0.5s'
-            }}>
-              <Typography sx={{ color: colors.typography, fontWeight: 800 }}>10K+</Typography>
-            </Box>
-            <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              Students already sharing their journeys
-            </Typography>
-          </Box>
-        </Grid>
-        
-        <Grid item xs={12} md={6} sx={{ 
-          display: 'flex', 
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'relative',
-          zIndex: 1,
-          p: 4
-        }}>
-          <Box sx={{
-            position: 'relative',
-            width: '100%',
-            maxWidth: 500
-          }}>
-            {/* Decorative elements */}
-            <Box sx={{
-              position: 'absolute',
-              top: -20,
-              left: -20,
-              width: 100,
-              height: 100,
-              borderRadius: '50%',
-              backgroundColor: colors.accent + '40',
-              zIndex: 0,
-              animation: `${float} 6s ease-in-out infinite`
-            }} />
-            
-            <Box sx={{
-              position: 'absolute',
-              bottom: -30,
-              right: -30,
-              width: 150,
-              height: 150,
-              borderRadius: '50%',
-              backgroundColor: colors.secondary + '40',
-              zIndex: 0,
-              animation: `${float} 8s ease-in-out infinite`,
-              animationDelay: '1s'
-            }} />
-            
-            {/* Main card */}
-            <Box sx={{
-              backgroundColor: colors.surface,
-              borderRadius: 4,
-              boxShadow: '0 20px 40px rgba(0,0,0,0.2)',
-              p: 3,
-              position: 'relative',
-              zIndex: 1,
-              transform: 'rotate(-2deg)'
-            }}>
-              <Box sx={{ 
-                display: 'flex', 
-                alignItems: 'center', 
-                mb: 3,
-                transform: 'rotate(2deg)'
-              }}>
-                <Box sx={{ 
-                  width: 50, 
-                  height: 50, 
-                  borderRadius: '50%', 
-                  backgroundColor: colors.background,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  mr: 2
-                }}>
-                  <Typography sx={{ color: colors.primary, fontWeight: 800 }}>AJ</Typography>
-                </Box>
-                <Box>
-                  <Typography sx={{ fontWeight: 700, color: colors.typography }}>
-                    Alex Johnson
-                  </Typography>
-                  <Typography sx={{ fontSize: '0.9rem', color: colors.subtext }}>
-                    Computer Science Student
-                  </Typography>
-                </Box>
-              </Box>
-              
-              <Typography sx={{ 
-                fontStyle: 'italic', 
-                mb: 3,
-                color: colors.typography,
-                lineHeight: 1.6,
-                transform: 'rotate(2deg)'
-              }}>
-                "STUDEx helped me realize I wasn't alone in my struggles. The community support was invaluable during my toughest times."
-              </Typography>
-              
-              <Box sx={{ 
-                display: 'flex', 
-                justifyContent: 'space-between',
-                transform: 'rotate(2deg)'
-              }}>
-                <Button 
-                  variant="outlined" 
-                  size="small"
-                  sx={{
-                    borderColor: colors.primary,
-                    color: colors.primary,
-                    fontWeight: 600,
-                    borderRadius: '50px'
-                  }}
-                >
-                  Read Full Story
-                </Button>
-                
-                <Box sx={{ display: 'flex', gap: 1 }}>
-                  {['Academic', 'Mental Health'].map((tag, i) => (
-                    <Box 
-                      key={i}
-                      sx={{
-                        px: 1.5,
-                        py: 0.5,
-                        backgroundColor: colors.primary + '10',
-                        borderRadius: '50px',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        color: colors.primary
-                      }}
-                    >
-                      {tag}
-                    </Box>
-                  ))}
-                </Box>
-              </Box>
-            </Box>
-            
-            {/* Additional decorative card */}
-            <Box sx={{
-              position: 'absolute',
-              bottom: -30,
-              left: -30,
-              backgroundColor: colors.surface,
-              borderRadius: 3,
-              boxShadow: '0 15px 30px rgba(0,0,0,0.15)',
-              p: 2,
-              width: '60%',
-              zIndex: 0,
-              transform: 'rotate(3deg)'
-            }}>
-              <Typography sx={{ 
-                fontWeight: 600, 
-                color: colors.typography,
-                fontSize: '0.9rem',
-                mb: 1
-              }}>
-                Featured in Student Life Magazine
-              </Typography>
-              <Box sx={{ display: 'flex', gap: 1 }}>
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Box 
-                    key={star}
-                    sx={{
-                      width: 16,
-                      height: 16,
-                      backgroundColor: colors.accent,
-                      borderRadius: '50%'
-                    }}
-                  />
-                ))}
-              </Box>
-            </Box>
-          </Box>
-        </Grid>
-      </Grid>
-    </Box>
-
-      {/* Stats Section */}
-      <Container sx={{ py: 8 }}>
-        <Grid container spacing={3} justifyContent="center">
-          {stats.map((stat, index) => (
-            <Grid item xs={6} sm={3} key={index}>
-              <Grow in timeout={800} style={{ transitionDelay: `${index * 150}ms` }}>
-                <Box sx={{ 
-                  textAlign: 'center',
-                  p: 3,
-                  borderRadius: 3,
-                  backgroundColor: colors.surface,
-                  color: colors.typography,
-                  boxShadow: '0 8px 20px rgba(0,0,0,0.06)',
-                  transition: 'all 0.3s ease',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
-                    boxShadow: '0 12px 30px rgba(0,0,0,0.1)',
-                  }
-                }}>
-                  <Box sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: 70,
-                    height: 70,
-                    mb: 2,
-                    backgroundColor: colors.primary + '10',
-                    borderRadius: '50%',
-                    color: colors.primary,
-                    animation: `${float} 4s ease-in-out infinite`,
-                    animationDelay: `${index * 0.5}s`
-                  }}>
-                    {React.cloneElement(stat.icon, { sx: { fontSize: 30 } })}
-                  </Box>
-                  <Typography variant="h3" sx={{ fontWeight: 800, color: colors.primary }}>
-                    {stat.value}
-                  </Typography>
-                  <Typography variant="h6" sx={{ fontWeight: 600, color: colors.subtext }}>
-                    {stat.label}
-                  </Typography>
-                </Box>
-              </Grow>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-
-      {/* Value Proposition */}
-      <Box sx={{ py: 8, backgroundColor: colors.surface }}>
-        <Container>
-          <Box textAlign="center" sx={{ mb: 8 }}>
-            <Chip 
-              label="How it works" 
-              color="primary" 
-              sx={{ 
-                mb: 2, 
-                fontWeight: 700, 
-                fontSize: '0.9rem',
-                px: 2,
-                py: 1
-              }} 
-            />
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800,
-                color: colors.typography,
-                mb: 2
-              }}
-            >
-              Your Path to Success
-            </Typography>
-            <Typography variant="h6" sx={{ maxWidth: 700, mx: 'auto', color: colors.subtext }}>
-              STUDEx provides a comprehensive approach to overcoming academic challenges
-            </Typography>
-          </Box>
-          
-          <Grid container spacing={6}>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ 
-                backgroundColor: colors.background, 
-                borderRadius: 4, 
-                p: 5,
-                height: '100%',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
-              }}>
-                <Typography variant="h4" sx={{ fontWeight: 700, mb: 3, color: colors.primary }}>
-                  How STUDEx Helps You Succeed
-                </Typography>
-                
-                {features.map((feature, index) => (
-                  <Box key={index} sx={{ mb: 3, display: 'flex', alignItems: 'flex-start' }}>
-                    <Box sx={{
-                      minWidth: 36,
-                      height: 36,
-                      borderRadius: '50%',
-                      backgroundColor: colors.secondary,
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      mr: 2,
-                      mt: 0.5
-                    }}>
-                      <Typography sx={{ color: 'white', fontWeight: 700 }}>{index + 1}</Typography>
-                    </Box>
-                    <Box>
-                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-                        {feature.title}
-                      </Typography>
-                      <Typography sx={{ color: colors.subtext }}>
-                        {feature.description}
-                      </Typography>
-                    </Box>
-                  </Box>
-                ))}
-              </Box>
-            </Grid>
-            
-            <Grid item xs={12} md={6}>
-              <Box sx={{ 
-                backgroundColor: colors.primary, 
-                borderRadius: 4, 
-                p: 5,
-                height: '100%',
-                color: 'white',
-                position: 'relative',
-                overflow: 'hidden',
-                '&:before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: -50,
-                  right: -50,
-                  width: 200,
-                  height: 200,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(255,255,255,0.1)'
-                }
-              }}>
-                <Typography variant="h4" sx={{ fontWeight: 700, mb: 3, position: 'relative' }}>
-                  Why Students Choose Us
-                </Typography>
-                
-                <Box sx={{ mb: 3, display: 'flex', alignItems: 'flex-start', position: 'relative' }}>
-                  <EmojiObjects sx={{ fontSize: 36, mr: 2, color: colors.accent }} />
-                  <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-                      Real Student Stories
-                    </Typography>
-                    <Typography sx={{ opacity: 0.9 }}>
-                      Authentic experiences from peers who overcame similar challenges
-                    </Typography>
-                  </Box>
-                </Box>
-                
-                <Box sx={{ mb: 3, display: 'flex', alignItems: 'flex-start', position: 'relative' }}>
-                  <TrendingUp sx={{ fontSize: 36, mr: 2, color: colors.accent }} />
-                  <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-                      Evidence-Based Tools
-                    </Typography>
-                    <Typography sx={{ opacity: 0.9 }}>
-                      Practical strategies backed by educational psychology
-                    </Typography>
-                  </Box>
-                </Box>
-                
-                <Box sx={{ display: 'flex', alignItems: 'flex-start', position: 'relative' }}>
-                  <Group sx={{ fontSize: 36, mr: 2, color: colors.accent }} />
-                  <Box>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5 }}>
-                      Supportive Community
-                    </Typography>
-                    <Typography sx={{ opacity: 0.9 }}>
-                      Connect with others who understand your journey
-                    </Typography>
-                  </Box>
-                </Box>
-                
-                <Button
-                  variant="contained"
-                  size="large"
-                  sx={{
-                    mt: 4,
-                    backgroundColor: colors.accent,
-                    color: colors.typography,
-                    fontWeight: 700,
-                    px: 4,
-                    py: 1.5,
-                    borderRadius: '50px',
-                    '&:hover': {
-                      backgroundColor: '#c0ca33',
-                    }
-                  }}
-                >
-                  Join Our Community
-                </Button>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
+    <Slide in={inView} direction="up" timeout={800}>
+      <Box
+        ref={ref}
+        sx={{
+          display: "flex",
+          alignItems: "flex-start",
+          mb: 3,
+          transition: "transform 0.3s ease",
+          "&:hover": {
+            transform: "translateX(5px)",
+          },
+        }}
+      >
+        <Box sx={{ mr: 2, mt: "2px" }}>
+          <HandDrawnCheck />
+        </Box>
+        <Typography
+          sx={{
+            fontFamily: "Lora, Merriweather, serif",
+            color: colors.bodyText,
+            fontSize: "1.07rem",
+            lineHeight: 1.7,
+          }}
+        >
+          {text}
+        </Typography>
       </Box>
-
-      {/* Featured Stories */}
-      <Container sx={{ py: 8 }}>
-        <Box textAlign="center" sx={{ mb: 6 }}>
-          <Typography 
-            variant="h2" 
-            sx={{ 
-              fontWeight: 800,
-              color: colors.typography,
-              mb: 2
-            }}
-          >
-            Recent Breakthrough Stories
-          </Typography>
-          <Typography variant="h6" sx={{ maxWidth: 700, mx: 'auto', color: colors.subtext }}>
-            Discover how students like you overcame challenges and achieved success
-          </Typography>
-        </Box>
-        
-        <Grid container spacing={4} sx={{ mt: 2 }}>
-          {featuredStories.map((story, index) => (
-            <Grid item xs={12} md={4} key={story.id}>
-              <Grow in timeout={800} style={{ transitionDelay: `${index * 200}ms` }}>
-                <Card sx={{ 
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  transition: 'all 0.4s ease',
-                  boxShadow: '0 8px 20px rgba(0,0,0,0.06)',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  '&:hover': {
-                    transform: 'translateY(-10px)',
-                    boxShadow: '0 15px 40px rgba(0,0,0,0.1)',
-                  }
-                }}>
-                  <CardMedia
-                    component="img"
-                    height="220"
-                    image={story.image}
-                    alt={story.title}
-                    sx={{ objectFit: 'cover' }}
-                  />
-                  <CardContent sx={{ flexGrow: 1, backgroundColor: colors.surface }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                      <Avatar src={story.avatar} sx={{ width: 40, height: 40, mr: 2 }} />
-                      <Chip
-                        label={story.category}
-                        size="small"
-                        sx={{ 
-                          fontWeight: 700,
-                          backgroundColor: colors.primary + '10',
-                          color: colors.primary
-                        }}
-                      />
-                    </Box>
-                    <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: colors.typography }}>
-                      {story.title}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ mb: 2 }}
-                    >
-                      {story.excerpt}
-                    </Typography>
-                  </CardContent>
-                  <Box sx={{ 
-                    backgroundColor: colors.background, 
-                    p: 2,
-                    display: 'flex',
-                    justifyContent: 'flex-end'
-                  }}>
-                    <Button
-                      component={Link}
-                      to={`/stories/${story.id}`}
-                      variant="text"
-                      endIcon={<ArrowForward />}
-                      sx={{
-                        fontWeight: 700,
-                        color: colors.primary,
-                        '&:hover': {
-                          color: colors.secondary,
-                        }
-                      }}
-                    >
-                      Read Full Story
-                    </Button>
-                  </Box>
-                </Card>
-              </Grow>
-            </Grid>
-          ))}
-        </Grid>
-        
-        <Box textAlign="center" sx={{ mt: 6 }}>
-          <Button
-            variant="outlined"
-            component={Link}
-            to="/stories"
-            size="large"
-            sx={{
-              fontWeight: 700,
-              px: 5,
-              py: 1.5,
-              transition: 'all 0.3s ease',
-              color: colors.primary,
-              borderColor: colors.primary,
-              borderRadius: '50px',
-              '&:hover': {
-                backgroundColor: colors.primary,
-                color: 'white',
-                borderColor: colors.primary,
-              }
-            }}
-          >
-            View All Stories
-          </Button>
-        </Box>
-      </Container>
-
-      {/* Testimonials */}
-      <Box sx={{ 
-        backgroundColor: colors.background, 
-        py: 8,
-        borderTop: `1px solid ${colors.background}`,
-        borderBottom: `1px solid ${colors.background}`
-      }}>
-        <Container>
-          <Box textAlign="center" sx={{ mb: 6 }}>
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 800,
-                color: colors.typography,
-                mb: 2
-              }}
-            >
-              What Students Are Saying
-            </Typography>
-            <Typography variant="h6" sx={{ maxWidth: 700, mx: 'auto', color: colors.subtext }}>
-              Join thousands of students who have transformed their academic journey
-            </Typography>
-          </Box>
-          
-          <Grid container spacing={4} sx={{ mt: 2 }}>
-            {testimonials.map((testimonial, index) => (
-              <Grid item xs={12} md={4} key={testimonial.id}>
-                <div className="scroll-reveal" style={{ 
-                  opacity: 1,
-                  transform: 'translateY(30px)',
-                  transition: 'opacity 0.6s ease, transform 0.6s ease',
-                  transitionDelay: `${index * 200}ms`
-                }}>
-                  <Card sx={{ 
-                    height: '100%', 
-                    bgcolor: colors.surface,
-                    borderRadius: 3,
-                    boxShadow: '0 8px 20px rgba(0,0,0,0.05)',
-                    transition: 'all 0.4s ease',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      boxShadow: '0 12px 30px rgba(0,0,0,0.1)',
-                    }
-                  }}>
-                    <CardContent sx={{ 
-                      position: 'relative', 
-                      flexGrow: 1,
-                      p: 4 
-                    }}>
-                      <Box
-                        sx={{
-                          position: 'absolute',
-                          top: 20,
-                          left: 20,
-                          color: colors.primary + '10',
-                          fontSize: 80,
-                          lineHeight: 1,
-                        }}
-                      >
-                        <ChatBubble fontSize="inherit" />
-                      </Box>
-                      <Typography
-                        sx={{
-                          fontStyle: "italic",
-                          fontSize: "1.1rem",
-                          mt: 3,
-                          lineHeight: 1.6,
-                          color: colors.typography,
-                          position: 'relative',
-                          zIndex: 1
-                        }}
-                      >
-                        "{testimonial.quote}"
-                      </Typography>
-                    </CardContent>
-                    <Box sx={{ 
-                      p: 3, 
-                      backgroundColor: colors.primary + '05',
-                      borderTop: `1px solid ${colors.background}`
-                    }}>
-                      <Typography
-                        sx={{
-                          fontWeight: 800,
-                          color: colors.typography
-                        }}
-                      >
-                        {testimonial.author}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: colors.subtext,
-                          fontSize: '0.9rem'
-                        }}
-                      >
-                        {testimonial.role}
-                      </Typography>
-                    </Box>
-                  </Card>
-                </div>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Final CTA */}
-      <Container sx={{ py: 8 }}>
-        <Box sx={{ 
-          backgroundColor: colors.primary, 
-          borderRadius: 4, 
-          p: { xs: 4, md: 8 },
-          textAlign: 'center',
-          color: 'white',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 15px 30px rgba(63, 81, 181, 0.3)',
-          '&:before': {
-            content: '""',
-            position: 'absolute',
-            top: -100,
-            right: -100,
-            width: 300,
-            height: 300,
-            borderRadius: '50%',
-            backgroundColor: 'rgba(255,255,255,0.1)',
-            zIndex: 0
-          }
-        }}>
-          <Typography 
-            variant="h2" 
-            sx={{ 
-              fontWeight: 800,
-              mb: 2,
-              position: 'relative',
-              zIndex: 1
-            }}
-          >
-            Ready to Transform Your Journey?
-          </Typography>
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              mb: 4, 
-              maxWidth: 700, 
-              mx: 'auto',
-              opacity: 0.9,
-              position: 'relative',
-              zIndex: 1
-            }}
-          >
-            Join our community and start your path to academic success today
-          </Typography>
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, position: 'relative', zIndex: 1 }}>
-            <Button
-              variant="contained"
-              size="large"
-              sx={{
-                backgroundColor: colors.accent,
-                color: colors.typography,
-                fontWeight: 700,
-                px: 4,
-                py: 1.5,
-                borderRadius: '50px',
-                '&:hover': {
-                  backgroundColor: '#c0ca33',
-                }
-              }}
-            >
-              Get Started
-            </Button>
-            <Button
-              variant="outlined"
-              color="inherit"
-              size="large"
-              sx={{
-                fontWeight: 700,
-                px: 4,
-                py: 1.5,
-                borderRadius: '50px',
-                borderWidth: 2,
-                '&:hover': {
-                  backgroundColor: 'rgba(255,255,255,0.1)',
-                  borderWidth: 2
-                }
-              }}
-            >
-              Learn More
-            </Button>
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+    </Slide>
   );
 };
 
-export default Home;
+export default function Home() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const checklistRef = useRef(null);
+
+  const [refHook, inViewHook] = useInView({ triggerOnce: true });
+  const [refChecklist, inViewChecklist] = useInView({ triggerOnce: true });
+  const [refDiagnosis, inViewDiagnosis] = useInView({ triggerOnce: true });
+  const [refTools, inViewTools] = useInView({ triggerOnce: true });
+  const [refCTA, inViewCTA] = useInView({ triggerOnce: true });
+
+  const handleScrollToChecklist = () => {
+    checklistRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <Box
+      sx={{ width: "100vw", backgroundColor: colors.white, minHeight: "100vh" }}
+    >
+      {/* Section 1: The Hook */}
+      {/* <Box
+        ref={refHook}
+        sx={{
+          minHeight: "100vh",
+          display: "flex",
+          alignItems: "center",
+          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.85), rgba(240, 242, 245, 0.9))",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          px: { xs: 2, sm: 4 },
+          py: { xs: 8, sm: 0 },
+        }}
+      > */}
+
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "100%",
+          minHeight: "100vh",
+          boxSizing: "border-box",
+          display: "flex",
+          alignItems: "center",
+          position: "relative",
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          px: { xs: 0, md: 0 },
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255,255,255,0.4)",
+            zIndex: 0,
+          },
+        }}
+      >
+        <Fade in={inViewHook} timeout={800}>
+          <Container
+            maxWidth="md"
+            sx={{
+              textAlign: "center",
+              mt: { xs: 4, sm: 0 },
+            }}
+          >
+            <Typography
+              variant="h2"
+              gutterBottom
+              sx={{
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: 800,
+                fontSize: { xs: "2rem", sm: "2.7rem", md: "3.2rem" },
+                color: colors.primary,
+                lineHeight: 1.2,
+                mb: 3,
+              }}
+            >
+              Ever get a good grade and think,&nbsp;
+              <Box
+                component="span"
+                sx={{
+                  color: colors.accent,
+                  fontFamily: "inherit",
+                  borderBottom: `3px solid ${colors.accent}`,
+                  display: "inline-block",
+                  pb: 0.2,
+                }}
+              >
+                "I just got lucky"?
+              </Box>
+            </Typography>
+
+            <Typography
+              variant="h6"
+              sx={{
+                fontFamily: "Lora, serif",
+                color: colors.bodyText,
+                maxWidth: 600,
+                mx: "auto",
+                mb: 5,
+                fontSize: { xs: "1.1rem", sm: "1.25rem" },
+              }}
+            >
+              That feeling isn't a personality flaw. It's a pattern. And it can
+              be broken.
+            </Typography>
+
+            <Zoom
+              in={inViewHook}
+              style={{ transitionDelay: inViewHook ? "300ms" : "0ms" }}
+            >
+              <Button
+                variant="contained"
+                size="large"
+                onClick={handleScrollToChecklist}
+                sx={{
+                  fontWeight: 700,
+                  borderRadius: "32px",
+                  px: 5,
+                  py: 1.5,
+                  background: colors.accent,
+                  fontSize: "1.15rem",
+                  "&:hover": {
+                    background: colors.accentDark,
+                    transform: "translateY(-3px)",
+                    boxShadow: `0 4px 12px ${colors.accent}40`,
+                  },
+                  transition: "all 0.3s ease",
+                  boxShadow: `0 2px 8px ${colors.accent}30`,
+                }}
+              >
+                FIND OUT IF THIS IS YOU
+              </Button>
+            </Zoom>
+          </Container>
+        </Fade>
+      </Box>
+
+      {/* Section 2: The Symptom Checklist */}
+      <Box
+        ref={checklistRef}
+        sx={{
+          py: { xs: 6, md: 10 },
+          background: "#fcfcfc",
+          borderTop: `1px solid ${colors.gray}`,
+          borderBottom: `1px solid ${colors.gray}`,
+        }}
+      >
+        <Fade in={inViewChecklist} timeout={800}>
+          <Container maxWidth="md">
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: 700,
+                color: colors.primary,
+                textAlign: "center",
+                mb: 5,
+                fontSize: { xs: "1.5rem", md: "2.2rem" },
+              }}
+            >
+              Which of These Sound Familiar?
+            </Typography>
+
+            <Grid container spacing={4} ref={refChecklist}>
+              {checklistItems.map((col, colIndex) => (
+                <Grid item xs={12} md={6} key={colIndex}>
+                  {col.map((item, itemIndex) => (
+                    <ChecklistItem
+                      key={`${colIndex}-${itemIndex}`}
+                      text={item}
+                    />
+                  ))}
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </Fade>
+      </Box>
+
+      {/* Section 3: The Diagnosis & Reframe */}
+      <Box
+        sx={{
+          py: { xs: 7, md: 9 },
+          background: colors.gray,
+        }}
+      >
+        <Fade in={inViewDiagnosis} timeout={800}>
+          <Container maxWidth="sm">
+            <Paper
+              ref={refDiagnosis}
+              elevation={0}
+              sx={{
+                p: { xs: 3, sm: 4 },
+                background: colors.white,
+                borderRadius: "16px",
+                borderLeft: `5px solid ${colors.accent}`,
+                textAlign: "center",
+                boxShadow: "0 8px 20px rgba(37, 56, 88, 0.08)",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-5px)",
+                  boxShadow: "0 12px 24px rgba(37, 56, 88, 0.12)",
+                },
+              }}
+            >
+              <Typography
+                variant="h5"
+                sx={{
+                  fontFamily: "Montserrat, sans-serif",
+                  fontWeight: 700,
+                  mb: 3,
+                  color: colors.primary,
+                  fontSize: { xs: "1.2rem", sm: "1.6rem" },
+                }}
+              >
+                If you nodded along, you're not a failure.
+                <br />
+                You're just experiencing Impostor Syndrome.
+              </Typography>
+
+              <Typography
+                sx={{
+                  fontFamily: "Lora, serif",
+                  color: colors.bodyText,
+                  fontSize: { xs: "1rem", sm: "1.13rem" },
+                  opacity: 0.97,
+                }}
+              >
+                It's the overwhelming feeling that you're a fraud, despite all
+                the evidence showing you're capable.
+                <br />
+                <Box
+                  component="span"
+                  fontWeight="600"
+                  color={colors.accentDark}
+                >
+                  It's not a character flaw. It's a strategy problem.
+                </Box>{" "}
+                And because it's a problem with a pattern, it's a problem with a
+                solution.
+              </Typography>
+            </Paper>
+          </Container>
+        </Fade>
+      </Box>
+
+      {/* Section 4: The Promise (Solution/Tools) */}
+      <Box sx={{ py: { xs: 7, md: 10 }, background: colors.white }}>
+        <Fade in={inViewTools} timeout={800}>
+          <Container maxWidth="md">
+            <Typography
+              variant="h4"
+              gutterBottom
+              sx={{
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: 700,
+                color: colors.primary,
+                textAlign: "center",
+                mb: 2,
+                fontSize: { xs: "1.3rem", md: "2rem" },
+              }}
+            >
+              You Can't "Think" Your Way Out of This. You Have to Act.
+            </Typography>
+
+            <Typography
+              variant="subtitle1"
+              sx={{
+                textAlign: "center",
+                mb: 6,
+                color: colors.subtle,
+                fontFamily: "Lora, serif",
+                fontSize: { xs: "1rem", md: "1.19rem" },
+                maxWidth: 700,
+                mx: "auto",
+              }}
+            >
+              We don't do motivational quotes. We build practical tools to give
+              your brain the hard evidence it needs.
+            </Typography>
+
+            <Grid container spacing={4} ref={refTools}>
+              {tools.map((tool, index) => (
+                <Grid item xs={12} sm={4} key={tool.title}>
+                  <Grow
+                    in={inViewTools}
+                    timeout={800}
+                    style={{
+                      transitionDelay: inViewTools ? `${index * 200}ms` : "0ms",
+                    }}
+                  >
+                    <Paper
+                      elevation={0}
+                      sx={{
+                        p: 3,
+                        height: "100%",
+                        borderRadius: "16px",
+                        textAlign: "center",
+                        border: "1px solid rgba(37, 56, 88, 0.08)",
+                        transition: "all 0.3s ease",
+                        "&:hover": {
+                          transform: "translateY(-8px)",
+                          boxShadow: "0 12px 24px rgba(37, 56, 88, 0.1)",
+                          borderColor: colors.accent + "40",
+                        },
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          width: 70,
+                          height: 70,
+                          borderRadius: "50%",
+                          background: colors.accent + "15",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          mx: "auto",
+                          mb: 3,
+                        }}
+                      >
+                        {tool.icon}
+                      </Box>
+
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontFamily: "Montserrat, sans-serif",
+                          color: colors.primary,
+                          fontWeight: 700,
+                          mb: 2,
+                          fontSize: "1.12rem",
+                        }}
+                      >
+                        {tool.title}
+                      </Typography>
+
+                      <Typography
+                        sx={{
+                          fontFamily: "Lora, serif",
+                          color: colors.bodyText,
+                          fontSize: "1rem",
+                          opacity: 0.95,
+                        }}
+                      >
+                        {tool.description}
+                      </Typography>
+                    </Paper>
+                  </Grow>
+                </Grid>
+              ))}
+            </Grid>
+
+            <Box textAlign="center" sx={{ mt: 6 }}>
+              <Zoom
+                in={inViewTools}
+                style={{ transitionDelay: inViewTools ? "600ms" : "0ms" }}
+              >
+                <Button
+                  variant="contained"
+                  sx={{
+                    background: colors.accent,
+                    fontWeight: 700,
+                    px: 5,
+                    py: 1.5,
+                    borderRadius: "32px",
+                    fontSize: "1.11rem",
+                    "&:hover": {
+                      background: colors.accentDark,
+                      transform: "translateY(-3px)",
+                      boxShadow: `0 4px 12px ${colors.accent}40`,
+                    },
+                    transition: "all 0.3s ease",
+                    boxShadow: `0 2px 8px ${colors.accent}30`,
+                  }}
+                >
+                  BROWSE ALL TOOLS
+                </Button>
+              </Zoom>
+            </Box>
+          </Container>
+        </Fade>
+      </Box>
+
+      {/* Section 5: The Call to Action */}
+      <Box
+        sx={{
+          background: colors.accent,
+          py: { xs: 8, md: 10 },
+          borderTopLeftRadius: "40px",
+          borderTopRightRadius: "40px",
+        }}
+      >
+        <Fade in={inViewCTA} timeout={800}>
+          <Container maxWidth="sm" ref={refCTA}>
+            <Box sx={{ textAlign: "center", color: colors.white }}>
+              <Typography
+                variant="h4"
+                gutterBottom
+                sx={{
+                  fontFamily: "Montserrat, sans-serif",
+                  fontWeight: 800,
+                  fontSize: { xs: "1.3rem", md: "2rem" },
+                  mb: 3,
+                }}
+              >
+                Stop Fighting Alone. Start Building Your Strategy.
+              </Typography>
+
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontFamily: "Lora, serif",
+                  color: "#f4f9f9",
+                  mb: 4,
+                  opacity: 0.97,
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                }}
+              >
+                Get my free Impostor Syndrome First-Aid Kit.
+                <br />
+                It includes 3 simple tools you can use today to start gathering
+                evidence and quieting that voice in your head.
+              </Typography>
+
+              <Box
+                component="form"
+                sx={{
+                  display: "flex",
+                  gap: 2,
+                  flexDirection: isMobile ? "column" : "row",
+                  justifyContent: "center",
+                  mt: 3,
+                }}
+                autoComplete="off"
+              >
+                <TextField
+                  variant="outlined"
+                  placeholder="Enter your email address"
+                  type="email"
+                  required
+                  sx={{
+                    flex: 1,
+                    background: colors.white,
+                    borderRadius: "30px",
+                    "& .MuiOutlinedInput-root": {
+                      borderRadius: "30px",
+                      fontFamily: "Lora, serif",
+                    },
+                    minWidth: "220px",
+                  }}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <EmailIcon sx={{ color: colors.accentDark }} />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    borderRadius: "30px",
+                    background: colors.primary,
+                    color: colors.white,
+                    fontWeight: 700,
+                    px: 4,
+                    py: 1.4,
+                    fontSize: "1rem",
+                    "&:hover": {
+                      background: "#1a202a",
+                      transform: "translateY(-2px)",
+                      boxShadow: `0 4px 8px rgba(37, 56, 88, 0.3)`,
+                    },
+                    transition: "all 0.3s ease",
+                    minWidth: "180px",
+                  }}
+                >
+                  SEND ME THE KIT
+                </Button>
+              </Box>
+            </Box>
+          </Container>
+        </Fade>
+      </Box>
+    </Box>
+  );
+}
